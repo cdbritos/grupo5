@@ -57,19 +57,19 @@
 graba en base auxiliar</note>
       <xloc>514</xloc>
       <yloc>18</yloc>
-      <width>117</width>
-      <heigth>37</heigth>
+      <width>159</width>
+      <heigth>44</heigth>
     </notepad>
   </notepads>
   <connection>
     <name>auxiliar</name>
-    <server>localhost</server>
+    <server>${DISDW_AUX_DB_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>auxiliar</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>${DISDW_AUX_DB_NAME}</database>
+    <port>${DISDW_AUX_DB_PORT}</port>
+    <username>${DISDW_AUX_DB_USER}</username>
+    <password>${DISDW_AUX_DB_PASS}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -77,7 +77,7 @@ graba en base auxiliar</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${DISDW_AUX_DB_PORT}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -109,8 +109,8 @@ graba en base auxiliar</note>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>456</xloc>
-      <yloc>121</yloc>
+      <xloc>485</xloc>
+      <yloc>82</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -139,8 +139,8 @@ graba en base auxiliar</note>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>373</xloc>
-      <yloc>206</yloc>
+      <xloc>429</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -155,19 +155,19 @@ graba en base auxiliar</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\barrios_limites\barrios.shp</filename>
+    <filename>${DISDW_FUENTES_UBICACION_GEOGRAFICA_PATH}barrios.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
     <add_rownr>N</add_rownr>
     <field_rownr/>
-    <gis_file_charset/>
+    <gis_file_charset>UTF-8</gis_file_charset>
     <passing_through_fields>N</passing_through_fields>
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>140</xloc>
-      <yloc>15</yloc>
+      <xloc>57</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -182,19 +182,19 @@ graba en base auxiliar</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\buses\v_uptu_lsv\v_uptu_lsv.shp</filename>
+    <filename>${DISDW_FUENTES_LINEAS_PATH}v_uptu_lsv.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
     <add_rownr>N</add_rownr>
     <field_rownr/>
-    <gis_file_charset/>
+    <gis_file_charset>UTF-8</gis_file_charset>
     <passing_through_fields>N</passing_through_fields>
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>132</xloc>
-      <yloc>273</yloc>
+      <xloc>50</xloc>
+      <yloc>271</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -209,19 +209,80 @@ graba en base auxiliar</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\buses\v_uptu_paradas\v_uptu_paradas.shp</filename>
+    <filename>${DISDW_FUENTES_LINEAS_PATH}v_uptu_paradas.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
     <add_rownr>N</add_rownr>
     <field_rownr/>
-    <gis_file_charset/>
+    <gis_file_charset>UTF-8</gis_file_charset>
     <passing_through_fields>N</passing_through_fields>
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>134</xloc>
-      <yloc>145</yloc>
+      <xloc>58</xloc>
+      <yloc>147</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows nroBarrio-GID</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size/>
+      <free_memory>25</free_memory>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>NROBARRIO</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+      <field>
+        <name>GID</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>693</xloc>
+      <yloc>98</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <count_rows>N</count_rows>
+      <count_field/>
+    <fields>      <field>        <name>NROBARRIO</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      <field>        <name>GID</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>810</xloc>
+      <yloc>242</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -265,8 +326,8 @@ graba en base auxiliar</note>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>948</xloc>
-      <yloc>126</yloc>
+      <xloc>893</xloc>
+      <yloc>93</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -315,8 +376,8 @@ graba en base auxiliar</note>
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>598</xloc>
-      <yloc>120</yloc>
+      <xloc>637</xloc>
+      <yloc>245</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -397,8 +458,8 @@ graba en base auxiliar</note>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>272</xloc>
-      <yloc>36</yloc>
+      <xloc>274</xloc>
+      <yloc>37</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -429,68 +490,7 @@ graba en base auxiliar</note>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>269</xloc>
-      <yloc>145</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows nroBarrio-GID</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size/>
-      <free_memory>25</free_memory>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>NROBARRIO</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-      <field>
-        <name>GID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>736</xloc>
-      <yloc>122</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-    <fields>      <field>        <name>NROBARRIO</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      <field>        <name>GID</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>848</xloc>
-      <yloc>124</yloc>
+      <yloc>146</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

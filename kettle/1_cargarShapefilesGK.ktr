@@ -55,13 +55,13 @@
   </notepads>
   <connection>
     <name>baseAuxiliar</name>
-    <server>localhost</server>
+    <server>${DISDW_AUX_DB_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>auxiliar</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>${DISDW_AUX_DB_NAME}</database>
+    <port>${DISDW_AUX_DB_PORT}</port>
+    <username>${DISDW_AUX_DB_USER}</username>
+    <password>${DISDW_AUX_DB_PASS}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -69,7 +69,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${DISDW_AUX_DB_PORT}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -87,7 +87,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\barrios_limites\barrios.shp</filename>
+    <filename>${DISDW_FUENTES_UBICACION_GEOGRAFICA_PATH}barrios.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
@@ -98,8 +98,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>51</xloc>
-      <yloc>160</yloc>
+      <xloc>52</xloc>
+      <yloc>217</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -114,7 +114,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\buses\v_uptu_lsv\v_uptu_lsv.shp</filename>
+    <filename>${DISDW_FUENTES_LINEAS_PATH}v_uptu_lsv.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
@@ -125,8 +125,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>54</xloc>
-      <yloc>95</yloc>
+      <xloc>53</xloc>
+      <yloc>114</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -141,7 +141,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>C:\grupo5\fuentes\gis\buses\v_uptu_paradas\v_uptu_paradas.shp</filename>
+    <filename>${DISDW_FUENTES_LINEAS_PATH}v_uptu_paradas.shp</filename>
     <isfilenameinfield>N</isfilenameinfield>
     <filenamefield/>
     <limit>0</limit>
@@ -153,7 +153,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>54</xloc>
-      <yloc>38</yloc>
+      <yloc>39</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -189,8 +189,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>179</xloc>
-      <yloc>162</yloc>
+      <xloc>294</xloc>
+      <yloc>217</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -226,8 +226,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>180</xloc>
-      <yloc>95</yloc>
+      <xloc>289</xloc>
+      <yloc>115</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -263,8 +263,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>180</xloc>
-      <yloc>41</yloc>
+      <xloc>294</xloc>
+      <yloc>39</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
