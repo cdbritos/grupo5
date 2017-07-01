@@ -140,7 +140,7 @@ graba en base auxiliar</note>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>429</xloc>
-      <yloc>203</yloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -167,7 +167,7 @@ graba en base auxiliar</note>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>57</xloc>
-      <yloc>32</yloc>
+      <yloc>34</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -193,7 +193,7 @@ graba en base auxiliar</note>
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>50</xloc>
+      <xloc>53</xloc>
       <yloc>271</yloc>
       <draw>Y</draw>
       </GUI>
@@ -458,8 +458,8 @@ graba en base auxiliar</note>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>274</xloc>
-      <yloc>37</yloc>
+      <xloc>282</xloc>
+      <yloc>34</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

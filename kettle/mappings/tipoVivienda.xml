@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	1	Casa <-> 1 Casa
+	2	Apartamento o casa en complejo habitacional <-> 2 Apartamento
+	3	Apartamento en edificio de altura <-> 2 Apartamento
+	4	Apartamento en edificio de una planta <-> 2 Apartamento
+	5	Local no construido para vivienda <-> 3 Otros
+-->
+
+<mappings>
+	<mapping>
+		<source>1</source>
+		<target>1</target>
+	</mapping>
+	<mapping>
+		<source>2</source>
+		<target>2</target>
+	</mapping>
+	<mapping>
+		<source>3</source>
+		<target>2</target>
+	</mapping>
+	<mapping>
+		<source>4</source>
+		<target>2</target>
+	</mapping>
+	<mapping>
+		<source>5</source>
+		<target>3</target>
+	</mapping>
+</mappings>
+

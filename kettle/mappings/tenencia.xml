@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--	1 	Propietario de la vivienda y el terreno y los está pagando <-> 1 Propietario
+	2	Propietario de la vivienda y el terreno y ya los pagó <-> 1 Propietario
+	3	Propietario solamente de la vivienda y la está pagando <-> 1 Propietario
+	4	Propietario solamente de la vivienda y ya la pagó <-> 1 Propietario
+	5	Inquilino o arrendatario de la vivienda <-> 2 Inquilino
+	6	Ocupante con relación de dependencia <-> 3 Ocupante
+	7	Ocupante gratuito. Se lo permite el B.P.S. <-> 3 Ocupante
+	8	Ocupante gratuito. Se lo permite un particular <-> 3 Ocupante
+	9	Ocupante sin permiso del propietario <-> 3 Ocupante
+-->
+<mappings>
+	<mapping>
+		<source>1</source>
+		<target>1</target>
+	</mapping>
+	<mapping>
+		<source>2</source>
+		<target>1</target>
+	</mapping>
+	<mapping>
+		<source>3</source>
+		<target>1</target>
+	</mapping>
+	<mapping>
+		<source>4</source>
+		<target>1</target>
+	</mapping>
+	<mapping>
+		<source>5</source>
+		<target>2</target>
+	</mapping>
+	<mapping>
+		<source>6</source>
+		<target>3</target>
+	</mapping>
+	<mapping>
+		<source>7</source>
+		<target>3</target>
+	</mapping>
+	<mapping>
+		<source>8</source>
+		<target>3</target>
+	</mapping>
+	<mapping>
+		<source>9</source>
+		<target>3</target>
+	</mapping>
+</mappings>
+

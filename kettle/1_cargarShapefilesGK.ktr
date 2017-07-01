@@ -76,7 +76,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Shapefile File Input lineas</from><to>Table output lineas</to><enabled>Y</enabled> </hop>  <hop> <from>Shapefile File paradas</from><to>Table output paradas</to><enabled>Y</enabled> </hop>  <hop> <from>Shapefile File Input barrios</from><to>Table output barrios</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Shapefile File Input lineas</from><to>Table output lineas</to><enabled>Y</enabled> </hop>  <hop> <from>Shapefile File Input barrios</from><to>Table output barrios</to><enabled>Y</enabled> </hop>  <hop> <from>Shapefile File paradas</from><to>Table output paradas</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Shapefile File Input barrios</name>
     <type>GISFileInput</type>
@@ -98,8 +98,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>52</xloc>
-      <yloc>217</yloc>
+      <xloc>63</xloc>
+      <yloc>309</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -125,8 +125,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>53</xloc>
-      <yloc>114</yloc>
+      <xloc>62</xloc>
+      <yloc>194</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -152,8 +152,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>54</xloc>
-      <yloc>39</yloc>
+      <xloc>61</xloc>
+      <yloc>74</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -175,7 +175,7 @@
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -186,11 +186,27 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+        <field>
+          <column_name>the_geom</column_name>
+          <stream_name>the_geom</stream_name>
+        </field>
+        <field>
+          <column_name>NROBARRIO</column_name>
+          <stream_name>NROBARRIO</stream_name>
+        </field>
+        <field>
+          <column_name>BARRIO</column_name>
+          <stream_name>BARRIO</stream_name>
+        </field>
+        <field>
+          <column_name>CODBA</column_name>
+          <stream_name>CODBA</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>294</xloc>
-      <yloc>217</yloc>
+      <xloc>477</xloc>
+      <yloc>306</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -212,7 +228,7 @@
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -223,11 +239,15 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+        <field>
+          <column_name>the_geom</column_name>
+          <stream_name>the_geom</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>289</xloc>
-      <yloc>115</yloc>
+      <xloc>479</xloc>
+      <yloc>196</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -249,7 +269,7 @@
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -260,11 +280,55 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+        <field>
+          <column_name>the_geom</column_name>
+          <stream_name>the_geom</stream_name>
+        </field>
+        <field>
+          <column_name>cod_ubic_p</column_name>
+          <stream_name>COD_UBIC_P</stream_name>
+        </field>
+        <field>
+          <column_name>desc_linea</column_name>
+          <stream_name>DESC_LINEA</stream_name>
+        </field>
+        <field>
+          <column_name>cod_varian</column_name>
+          <stream_name>COD_VARIAN</stream_name>
+        </field>
+        <field>
+          <column_name>ordinal</column_name>
+          <stream_name>ORDINAL</stream_name>
+        </field>
+        <field>
+          <column_name>esquina</column_name>
+          <stream_name>ESQUINA</stream_name>
+        </field>
+        <field>
+          <column_name>cod_calle1</column_name>
+          <stream_name>COD_CALLE1</stream_name>
+        </field>
+        <field>
+          <column_name>cod_calle2</column_name>
+          <stream_name>COD_CALLE2</stream_name>
+        </field>
+        <field>
+          <column_name>calle</column_name>
+          <stream_name>CALLE</stream_name>
+        </field>
+        <field>
+          <column_name>x</column_name>
+          <stream_name>X</stream_name>
+        </field>
+        <field>
+          <column_name>y</column_name>
+          <stream_name>Y</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>294</xloc>
-      <yloc>39</yloc>
+      <xloc>468</xloc>
+      <yloc>78</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
