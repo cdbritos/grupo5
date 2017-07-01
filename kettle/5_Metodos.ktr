@@ -438,13 +438,13 @@
   </notepads>
   <connection>
     <name>bd_dwh</name>
-    <server>localhost</server>
+    <server>&#x24;&#x7b;DISDW_DWH_DB_HOST&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwh</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>&#x24;&#x7b;DISDW_DWH_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_DWH_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_DWH_DB_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -452,7 +452,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -472,6 +472,58 @@
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Regex Evaluation</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <script><![CDATA[UYMVD_(.+)]]></script>    <matcher>METODO</matcher>
+    <resultfieldname/>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>NombreMetodo</name>
+        <type>String</type>
+        <format/>
+        <group>1</group>
+        <decimal/>
+        <length>12</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
   <step>
     <name>metodos</name>
     <type>TextFileInput</type>
@@ -510,7 +562,7 @@
     <encoding/>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>C&#x3a;&#x5c;grupo5&#x5c;fuentes&#x5c;metodos&#x5c;aire-metodos.csv</name>
+      <name>&#x24;&#x7b;DISDW_FUENTES_METODOS_PATH&#x7d;aire-metodos.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -591,9 +643,9 @@
     <schema/>
     <table>metodos</table>
     <commit>5</commit>
-    <truncate>Y</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
+    <truncate>N</truncate>
+    <ignore_errors>Y</ignore_errors>
+    <use_batch>N</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
@@ -623,58 +675,6 @@
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Regex Evaluation</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script><![CDATA[UYMVD_(.+)]]></script>    <matcher>METODO</matcher>
-    <resultfieldname/>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>NombreMetodo</name>
-        <type>String</type>
-        <format/>
-        <group>1</group>
-        <decimal/>
-        <length>12</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-        <currency/>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>

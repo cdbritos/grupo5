@@ -439,7 +439,7 @@
       <note>2 horas 32 minutos</note>
       <xloc>697</xloc>
       <yloc>129</yloc>
-      <width>101</width>
+      <width>120</width>
       <heigth>24</heigth>
       <fontname>Tahoma</fontname>
       <fontsize>8</fontsize>
@@ -606,8 +606,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>464</yloc>
+      <xloc>160</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -660,8 +660,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>352</yloc>
+      <xloc>160</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -734,8 +734,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>112</yloc>
+      <xloc>256</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1037,8 +1037,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>192</yloc>
+      <xloc>944</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1067,8 +1067,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>112</yloc>
+      <xloc>256</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1100,7 +1100,7 @@
     </remotesteps>
     <GUI>
       <xloc>480</xloc>
-      <yloc>352</yloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1459,8 +1459,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>384</yloc>
+      <xloc>304</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1502,7 +1502,7 @@
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>192</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
