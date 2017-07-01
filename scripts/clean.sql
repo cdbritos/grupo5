@@ -1,0 +1,4 @@
+
+DROP DATABASE dwh;
+
+DROP DATABASE auxiliar;
