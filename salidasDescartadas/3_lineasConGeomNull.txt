@@ -1,0 +1,2 @@
+cod_linea;desc_linea;cod_sublin;desc_subli;desc_varia;the_geom
+0;LINEA CERO                                        ;0;SUBLINEA CERO                                     ; ;
