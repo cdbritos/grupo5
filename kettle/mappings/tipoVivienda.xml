@@ -9,24 +9,29 @@
 
 <mappings>
 	<mapping>
-		<source>1</source>
-		<target>1</target>
+		<ecdh>1</ecdh>
+		<disdw>1</disdw>
+		<disdwDesc>Casa</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>2</source>
-		<target>2</target>
+		<ecdh>2</ecdh>
+		<disdw>2</disdw>
+		<disdwDesc>Apartamento</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>3</source>
-		<target>2</target>
+		<ecdh>3</ecdh>
+		<disdw>2</disdw>
+		<disdwDesc>Apartamento</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>4</source>
-		<target>2</target>
+		<ecdh>4</ecdh>
+		<disdw>2</disdw>
+		<disdwDesc>Apartamento</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>5</source>
-		<target>3</target>
+		<ecdh>5</ecdh>
+		<disdw>3</disdw>
+		<disdwDesc>Otro</disdwDesc>
 	</mapping>
 </mappings>
 

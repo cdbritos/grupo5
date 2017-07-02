@@ -1,0 +1,83 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<datosNivelConfort>
+   <electrodomestico>
+      <idElectrodomestico>calefon</idElectrodomestico>
+      <ponderacion>2</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>calentador</idElectrodomestico>
+      <ponderacion>2</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>refrigerador</idElectrodomestico>
+      <ponderacion>4</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>tv</idElectrodomestico>
+      <ponderacion>1</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>lcd</idElectrodomestico>
+      <ponderacion>2</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>radio</idElectrodomestico>
+      <ponderacion>1</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>cable</idElectrodomestico>
+      <ponderacion>3</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>deco_digital</idElectrodomestico>
+      <ponderacion>2</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>deco_hd</idElectrodomestico>
+      <ponderacion>3</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>deco_otro</idElectrodomestico>
+      <ponderacion>2</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>dvd</idElectrodomestico>
+      <ponderacion>1</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>video</idElectrodomestico>
+      <ponderacion>1</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>lavarropa</idElectrodomestico>
+      <ponderacion>3</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>secarropa</idElectrodomestico>
+      <ponderacion>5</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>lavavajilla</idElectrodomestico>
+      <ponderacion>5</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>microondas</idElectrodomestico>
+      <ponderacion>3</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>aire_acondicionado</idElectrodomestico>
+      <ponderacion>5</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>micro_computador</idElectrodomestico>
+      <ponderacion>5</ponderacion>
+   </electrodomestico>
+   <electrodomestico>
+      <idElectrodomestico>servicio_domestico</idElectrodomestico>
+      <ponderacion>7</ponderacion>
+   </electrodomestico>
+</datosNivelConfort>
+
+

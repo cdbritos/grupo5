@@ -11,40 +11,49 @@
 -->
 <mappings>
 	<mapping>
-		<source>1</source>
-		<target>1</target>
+		<ecdh>1</ecdh>
+		<disdw>1</disdw>
+		<disdwDesc>Propietario</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>2</source>
-		<target>1</target>
+		<ecdh>2</ecdh>
+		<disdw>1</disdw>
+		<disdwDesc>Propietario</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>3</source>
-		<target>1</target>
+		<ecdh>3</ecdh>
+		<disdw>1</disdw>
+		<disdwDesc>Propietario</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>4</source>
-		<target>1</target>
+		<ecdh>4</ecdh>
+		<disdw>1</disdw>
+		<disdwDesc>Propietario</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>5</source>
-		<target>2</target>
+		<ecdh>5</ecdh>
+		<disdw>2</disdw>
+		<disdwDesc>Inquilino</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>6</source>
-		<target>3</target>
+		<ecdh>6</ecdh>
+		<disdw>3</disdw>
+		<disdwDesc>Ocupante</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>7</source>
-		<target>3</target>
+		<ecdh>7</ecdh>
+		<disdw>3</disdw>
+		<disdwDesc>Ocupante</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>8</source>
-		<target>3</target>
+		<ecdh>8</ecdh>
+		<disdw>3</disdw>
+		<disdwDesc>Ocupante</disdwDesc>
 	</mapping>
 	<mapping>
-		<source>9</source>
-		<target>3</target>
+		<ecdh>9</ecdh>
+		<disdw>3</disdw>
+		<disdwDesc>Ocupante</disdwDesc>
 	</mapping>
 </mappings>
 
