@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Row>
+   <p_goteras>1</p_goteras>
+   <p_grietas_muro>1</p_grietas_muro>
+   <p_grietas_piso>1</p_grietas_piso>
+   <p_poca_luz>1</p_poca_luz>
+   <p_escasa_ventilacion>1</p_escasa_ventilacion>
+   <p_humedad_cimiento>1</p_humedad_cimiento>
+</Row>
+
