@@ -156,3 +156,24 @@ WITH (
 ALTER TABLE public.mediciones
   OWNER TO postgres;
 
+
+ -- View: public.vw_fact_mediciones
+
+-- DROP VIEW public.vw_fact_mediciones;
+
+CREATE OR REPLACE VIEW public.vw_fact_mediciones AS 
+ SELECT m.idfecha,
+    m.idestacion,
+    b.idccz,
+    m.idmetodo,
+    m.idcontaminante,
+    m.idlinea,
+    m.polucion
+   FROM mediciones m
+     JOIN bridge_ccubicacion b ON m.idestacion::text = b.idestacion::text;
+
+ALTER TABLE public.vw_fact_mediciones
+  OWNER TO postgres;
+ 
+  
+  
