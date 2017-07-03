@@ -1,6 +1,6 @@
 <Schema name="dwh">
   <Cube name="mediciones" visible="true" cache="true" enabled="true">
-    <Table name="mediciones" schema="public">
+    <Table name="vw_fact_mediciones" schema="public">
     </Table>
     <Dimension type="StandardDimension" visible="true" foreignKey="idmetodo" highCardinality="false" name="M&#233;todos">
       <Hierarchy name="M&#233;todos de Monitoreo" visible="true" hasAll="true" primaryKey="idmetodo">
@@ -23,12 +23,18 @@
       </Hierarchy>
     </Dimension>
     <Dimension type="StandardDimension" visible="true" foreignKey="idestacion" highCardinality="false" name="Ubicaci&#243;n Geogr&#225;fica">
-      <Hierarchy name="ubicGeografica" visible="true" hasAll="true">
-        <Table name="ubicaciongeog_1" schema="public">
+      <Hierarchy name="Centro comunal" visible="true" hasAll="true">
+        <Table name="ccz" schema="public" alias="">
         </Table>
-        <Level name="Barrio" visible="true" table="ubicaciongeog_1" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+        <Level name="Centro Comunal" visible="true" column="idccz" nameColumn="nombreccz" type="String" uniqueMembers="false" levelType="Regular" captionColumn="nombreccz">
         </Level>
-        <Level name="Estaci&#243;n" visible="true" table="ubicaciongeog_1" column="idestacion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacion">
+      </Hierarchy>
+      <Hierarchy name="Ubicaci&#243;nGeogr&#225;fica" visible="true" hasAll="false">
+        <Table name="ubicaciongeog_1" schema="public" alias="">
+        </Table>
+        <Level name="Barrio" visible="true" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+        </Level>
+        <Level name="Estacion" visible="true" column="idestacion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacion">
         </Level>
       </Hierarchy>
     </Dimension>
@@ -44,11 +50,11 @@
       <Hierarchy name="Fecha-A&#241;o" visible="true" hasAll="true">
         <Table name="tiempo" schema="public">
         </Table>
-        <Level name="A&#241;o" visible="true" column="anio" nameColumn="anio" uniqueMembers="false" captionColumn="anio">
+        <Level name="A&#241;o" visible="true" column="anio" nameColumn="anio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="anio">
         </Level>
-        <Level name="Semestre" visible="true" column="semestre" nameColumn="semestre" type="String" uniqueMembers="false" captionColumn="semestre">
+        <Level name="Semestre" visible="true" column="semestre" nameColumn="semestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="semestre">
         </Level>
-        <Level name="Trimestre" visible="true" column="trimestre" type="String" uniqueMembers="false" captionColumn="trimestre">
+        <Level name="Trimestre" visible="true" column="trimestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="trimestre">
         </Level>
         <Level name="Mes" visible="true" column="id_mes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_mes">
         </Level>
@@ -58,25 +64,17 @@
       <Hierarchy name="Fecha-DiaSemana" visible="true" hasAll="true">
         <Table name="tiempo" schema="public">
         </Table>
-        <Level name="d&#237;aSemana" visible="true" column="id_dia_semana" nameColumn="nombre_dia_semana" uniqueMembers="false" captionColumn="nombre_dia_semana">
+        <Level name="d&#237;aSemana" visible="true" column="id_dia_semana" nameColumn="nombre_dia_semana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_dia_semana">
         </Level>
         <Level name="Fecha" visible="true" column="idfecha" nameColumn="fecha" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
         </Level>
       </Hierarchy>
       <Hierarchy name="Fecha-Estaci&#243;n" visible="true" hasAll="true">
-        <Table name="tiempo" schema="public" alias="">
+        <Table name="tiempo" schema="public">
         </Table>
-        <Level name="Estaci&#243;nDelA&#241;o" visible="true" column="id_estacion_anio" nameColumn="nombre_estacion_anio" uniqueMembers="false" captionColumn="nombre_estacion_anio">
+        <Level name="Estaci&#243;nDelA&#241;o" visible="true" column="id_estacion_anio" nameColumn="nombre_estacion_anio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_estacion_anio">
         </Level>
         <Level name="Fecha" visible="true" column="idfecha" nameColumn="fecha" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
-        </Level>
-      </Hierarchy>
-    </Dimension>
-    <Dimension type="StandardDimension" visible="true" foreignKey="idestacion" name="ccz">
-      <Hierarchy name="ccz" visible="true" hasAll="true">
-        <Table name="bridge_ccubicacion_v" schema="public" alias="">
-        </Table>
-        <Level name="ccz" visible="true" table="bridge_ccubicacion_v" column="idccz" nameColumn="nombreccz" uniqueMembers="false" captionColumn="nombreccz">
         </Level>
       </Hierarchy>
     </Dimension>
