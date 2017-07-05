@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problemas>
+   <problema>
+      <id>1</id>
+      <nombre>Humedades en techos</nombre>
+      <column>p_humedad_techo</column>
+   </problema>
+   <problema>
+      <id>2</id>
+      <nombre>Goteras en techos</nombre>
+      <column>p_goteras</column>
+   </problema>
+   <problema>
+      <id>3</id>
+      <nombre>Muros agrietados</nombre>
+      <column>p_grietas_muro</column>
+   </problema>
+   <problema>
+      <id>4</id>
+      <nombre>Puertas o ventanas en mal estado</nombre>
+      <column>p_puertas_mal</column>
+   </problema>
+   <problema>
+      <id>5</id>
+      <nombre>Grietas en pisos</nombre>
+      <column>p_grietas_piso</column>
+   </problema>
+   <problema>
+      <id>6</id>
+      <nombre>Caída de revoque en paredes o techos</nombre>
+      <column>p_caida_revoque</column>
+   </problema>
+   <problema>
+      <id>7</id>
+      <nombre>Cielos rasos desprendidos</nombre>
+      <column>p_cielo_raso_desprendido</column>
+   </problema>
+   <problema>
+      <id>8</id>
+      <nombre>Poca luz solar</nombre>
+      <column>p_poca_luz</column>
+   </problema>
+   <problema>
+      <id>9</id>
+      <nombre>Escasa ventilación</nombre>
+      <column>p_escasa_ventilacion</column>
+   </problema>
+   <problema>
+      <id>10</id>
+      <nombre>Se inunda cuando llueve</nombre>
+      <column>p_inunda</column>
+   </problema>
+   <problema>
+      <id>11</id>
+      <nombre>Peligro de derrumbe</nombre>
+      <column>p_derrumbe</column>
+   </problema>
+   <problema>
+      <id>12</id>
+      <nombre>Humedades en los cimientos</nombre>
+      <column>p_humedad_cimiento</column>
+   </problema>
+</problemas>

@@ -119,6 +119,18 @@ ALTER TABLE public.tiempo
   OWNER TO postgres;
 
 
+CREATE TABLE public.problemas
+(
+idproblema smallint NOT NULL,
+nom_problema character varying(50) NOT NULL,
+column_problema character varying(20) NOT NULL,
+CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
+)WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.problemas
+  OWNER TO postgres;
 
 
 CREATE TABLE public.mediciones

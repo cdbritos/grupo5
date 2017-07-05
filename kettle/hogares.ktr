@@ -435,6 +435,30 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>bd_dwh</name>
+    <server>&#x24;&#x7b;DISDW_DWH_DB_HOST&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;DISDW_DWH_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_DWH_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_AUX_DB_PASS&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>Datos Encuesta</from>
@@ -501,6 +525,16 @@
       <to>getColumnProblema</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>GetTipoProblemas</from>
+      <to>Tabla Problemas</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>getColumnProblema</from>
+      <to>JoinIdProblema</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Datos Encuesta</name>
@@ -538,6 +572,34 @@
     </step>
 
   <step>
+    <name>DatosBridgeProblemas</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>      <field>        <name>id_hogar</name>
+      </field>      <field>        <name>xml_problemas</name>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
     <name>EliminarColumnas</name>
     <type>SelectValues</type>
     <description/>
@@ -549,35 +611,20 @@
       <schema_name/>
     </partitioning>
     <fields>      <field>        <name>id_hogar</name>
-        <rename/>
       </field>      <field>        <name>CCZ</name>
-        <rename/>
       </field>      <field>        <name>BARRIO</name>
-        <rename/>
       </field>      <field>        <name>NOMBARRIO</name>
-        <rename/>
       </field>      <field>        <name>asentamiento</name>
-        <rename/>
       </field>      <field>        <name>cant_mayores14</name>
-        <rename/>
       </field>      <field>        <name>cant_menores14</name>
-        <rename/>
       </field>      <field>        <name>cant_personas</name>
-        <rename/>
       </field>      <field>        <name>cant_hombres</name>
-        <rename/>
       </field>      <field>        <name>cant_mujeres</name>
-        <rename/>
       </field>      <field>        <name>_cant_menores_14</name>
-        <rename/>
       </field>      <field>        <name>disdw_tenencia</name>
-        <rename/>
       </field>      <field>        <name>disdw_tenencia_desc</name>
-        <rename/>
       </field>      <field>        <name>disdw_tipo_vivienda</name>
-        <rename/>
       </field>      <field>        <name>disdw_tipo_vivienda_desc</name>
-        <rename/>
       </field>        <select_unspecified>Y</select_unspecified>
       <remove>        <name>tipo_vivienda</name>
       </remove>      <remove>        <name>p_humedad_techo</name>
@@ -957,157 +1004,6 @@
     </step>
 
   <step>
-    <name>nullIf2</name>
-    <type>NullIf</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>p_humedad_techo</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_goteras</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_grietas_muro</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_puertas_mal</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_grietas_piso</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_caida_revoque</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_cielo_raso_desprendido</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_poca_luz</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_escasa_ventilacion</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_inunda</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_derrumbe</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>p_humedad_cimiento</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>calefon</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>calentador</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>refrigerador</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>tv</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>lcd</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>radio</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>cable</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>deco_digital</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>deco_hd</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>deco_otro</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>dvd</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>video</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>lavarropa</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>secarropa</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>lavavajilla</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>microondas</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>aire_acondicionado</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>micro_computador</name>
-        <value>2</value>
-        </field>
-      <field>
-        <name>servicio_domestico</name>
-        <value>2</value>
-        </field>
-      </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
     <name>ObtenerEncuestasMontevideo</name>
     <type>FilterRows</type>
     <description/>
@@ -1469,6 +1365,82 @@
     </step>
 
   <step>
+    <name>createRowIdHogarProblema</name>
+    <type>getXMLData</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <namespaceaware>N</namespaceaware>
+    <ignorecomments>N</ignorecomments>
+    <readurl>N</readurl>
+    <validating>N</validating>
+    <usetoken>N</usetoken>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <rownum_field/>
+    <encoding>UTF-8</encoding>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>nodoProblema</name>
+        <xpath>.</xpath>
+        <element_type>node</element_type>
+        <result_type>singlenode</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <loopxpath>&#x2f;Row&#x2f;&#x2a;</loopxpath>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <XmlField>xml_problemas</XmlField>
+    <prunePath/>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
     <name>generarXMLProblemas</name>
     <type>AddXML</type>
     <description/>
@@ -1491,7 +1463,7 @@
         <name>p_humedad_techo</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1505,7 +1477,7 @@
         <name>p_goteras</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1519,7 +1491,7 @@
         <name>p_grietas_muro</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1533,7 +1505,7 @@
         <name>p_puertas_mal</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1547,7 +1519,7 @@
         <name>p_grietas_piso</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1561,7 +1533,7 @@
         <name>p_caida_revoque</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1575,7 +1547,7 @@
         <name>p_cielo_raso_desprendido</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1589,7 +1561,7 @@
         <name>p_poca_luz</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1603,7 +1575,7 @@
         <name>p_escasa_ventilacion</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1617,7 +1589,7 @@
         <name>p_inunda</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1631,7 +1603,7 @@
         <name>p_derrumbe</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1645,7 +1617,7 @@
         <name>p_humedad_cimiento</name>
         <element/>
         <type>Number</type>
-        <format> 0</format>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -1666,6 +1638,58 @@
     <GUI>
       <xloc>528</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>getColumnProblema</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <script><![CDATA[<(\w+)[^>]*>.*]]></script>    <matcher>nodoProblema</matcher>
+    <resultfieldname>columnProblema</resultfieldname>
+    <usevar>Y</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>colProb</name>
+        <type>String</type>
+        <format/>
+        <group>1</group>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+        <currency/>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1767,7 +1791,158 @@
     </step>
 
   <step>
-    <name>createRowIdHogarProblema</name>
+    <name>nullIf2</name>
+    <type>NullIf</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>p_humedad_techo</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_goteras</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_grietas_muro</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_puertas_mal</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_grietas_piso</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_caida_revoque</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_cielo_raso_desprendido</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_poca_luz</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_escasa_ventilacion</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_inunda</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_derrumbe</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>p_humedad_cimiento</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>calefon</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>calentador</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>refrigerador</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>tv</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>lcd</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>radio</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>cable</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>deco_digital</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>deco_hd</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>deco_otro</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>dvd</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>video</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>lavarropa</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>secarropa</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>lavavajilla</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>microondas</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>aire_acondicionado</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>micro_computador</name>
+        <value>2</value>
+        </field>
+      <field>
+        <name>servicio_domestico</name>
+        <value>2</value>
+        </field>
+      </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>GetTipoProblemas</name>
     <type>getXMLData</type>
     <description/>
     <distribute>Y</distribute>
@@ -1787,11 +1962,11 @@
     <validating>N</validating>
     <usetoken>N</usetoken>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name/>
+      <name>&#x24;&#x7b;DISDW_MAPPINGS_PATH&#x7d;problemas.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1799,10 +1974,40 @@
     </file>
     <fields>
       <field>
-        <name>nodoProblema</name>
-        <xpath>.</xpath>
+        <name>id</name>
+        <xpath>id</xpath>
         <element_type>node</element_type>
-        <result_type>singlenode</result_type>
+        <result_type>valueof</result_type>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>nombre</name>
+        <xpath>nombre</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>column</name>
+        <xpath>column</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
         <currency/>
@@ -1815,10 +2020,10 @@
       </field>
     </fields>
     <limit>0</limit>
-    <loopxpath>&#x2f;Row&#x2f;&#x2a;</loopxpath>
-    <IsInFields>Y</IsInFields>
+    <loopxpath>&#x2f;problemas&#x2f;problema</loopxpath>
+    <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <XmlField>xml_problemas</XmlField>
+    <XmlField/>
     <prunePath/>
     <shortFileFieldName/>
     <pathFieldName/>
@@ -1836,45 +2041,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>DatosBridgeProblemas</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>      <field>        <name>id_hogar</name>
-        <rename/>
-      </field>      <field>        <name>xml_problemas</name>
-        <rename/>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
+      <xloc>1056</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>getColumnProblema</name>
-    <type>RegexEval</type>
+    <name>Tabla Problemas</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1883,32 +2058,36 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <script><![CDATA[<(\w+)[^>]*>.*]]></script>    <matcher>nodoProblema</matcher>
-    <resultfieldname>columnProblema</resultfieldname>
-    <usevar>Y</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
+    <connection>bd_dwh</connection>
+    <schema/>
+    <table>problemas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>Y</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
-      <field>
-        <name>colProb</name>
-        <type>String</type>
-        <format/>
-        <group>1</group>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
-        <currency/>
-      </field>
+        <field>
+          <column_name>idproblema</column_name>
+          <stream_name>id</stream_name>
+        </field>
+        <field>
+          <column_name>nom_problema</column_name>
+          <stream_name>nombre</stream_name>
+        </field>
+        <field>
+          <column_name>column_problema</column_name>
+          <stream_name>column</stream_name>
+        </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -1918,8 +2097,56 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>16</yloc>
+      <xloc>1040</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>JoinIdProblema</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>bd_dwh</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>problemas</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>colProb</name>
+        <field>column_problema</field>
+        <condition>LIKE</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>idproblema</name>
+        <rename>id_problema</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

@@ -1,0 +1,104 @@
+TIPO DE VIVIENDA	c1	
+		
+		1	Casa
+		2	Apartamento o casa en complejo habitacional
+		3	Apartamento en edificio de altura
+		4	Apartamento en edificio de una planta
+		5	Local no construido para vivienda
+
+DW: casa, apartamento y otros
+
+////////////////////////////////////////////////////////////////////////////77
+
+CREATE TABLE public.problemas
+(
+idproblema smallint NOT NULL,
+nom_problema character varying(50) NOT NULL,
+column_problema character varying(20) NOT NULL,
+CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
+)WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.problemas
+  OWNER TO postgres;
+
+PROBLEMAS DE LA VIVIENDA	
+
+	c5_1	1 = Si / 2 = No	Humedades en techos
+	c5_2	1 = Si / 2 = No	Goteras en techos
+	c5_3	1 = Si / 2 = No	Muros agrietados
+	c5_4	1 = Si / 2 = No	Puertas o ventanas en mal estado
+	c5_5	1 = Si / 2 = No	Grietas en pisos
+	c5_6	1 = Si / 2 = No	Caída de revoque en paredes o techos
+	c5_7	1 = Si / 2 = No	Cielos rasos desprendidos
+	c5_8	1 = Si / 2 = No	Poca luz solar
+	c5_9	1 = Si / 2 = No	Escasa ventilación
+	c5_10	1 = Si / 2 = No	Se inunda cuando llueve
+	c5_11	1 = Si / 2 = No	Peligro de derrumbe
+	c5_12	1 = Si / 2 = No	Humedades en los cimientos
+
+//////////////////////////////////////////////////////////////////////////////7
+
+
+TENENCIA DE LA VIVIENDA d8_1
+
+	1	Propietario de la vivienda y el terreno y los está pagando
+	2	Propietario de la vivienda y el terreno y ya los pagó
+	3	Propietario solamente de la vivienda y la está pagando
+	4	Propietario solamente de la vivienda y ya la pagó
+	5	Inquilino o arrendatario de la vivienda
+	6	Ocupante con relación de dependencia
+	7	Ocupante gratuito. Se lo permite el B.P.S.
+	8	Ocupante gratuito. Se lo permite un particular
+	9	Ocupante sin permiso del propietario
+
+DW: propietario, inquilino y ocupante
+
+//////////////////////////////////////////////////////////////////////////////
+
+VIVIENDA UBICADA EN ASENTAMIENTO IRREGULAR	
+	d8_4	1 = Sí / 2 = No
+
+//////////////////////////////////////////////////////////////////////////////
+
+ELEMENTOS DE CONFORT	
+	d21_1	1 = Sí / 2 = No	Calefón o termofón
+	d21_2	1 = Sí / 2 = No	Calentador instantáneo de agua
+	d21_3	1 = Sí / 2 = No	Refrigerador (con o sin freezer)
+	d21_4	1 = Sí / 2 = No	TV color (tubo)
+	d21_4_1	N°	Cantidad de TV color
+	d21_5	1 = Sí / 2 = No	TV  LCD, TV plasma, etc.
+	d21_5_1	N°	Cantidad de TV LCD, TV plasma, etc.
+	d21_6	1 = Sí / 2 = No	Radio
+	d21_7	1 = Sí / 2 = No	Conexión a TV para abonados
+	d21_7_1	1 = Sí / 2 = No	Decodificador digital
+	d21_7_2	1 = Sí / 2 = No	Decodificador HD con grabador
+	d21_7_3	1 = Sí / 2 = No	Otros decodificadores
+	d21_9	1 = Sí / 2 = No	Reproductor de DVD
+	d21_8	1 = Sí / 2 = No	Videocasetero
+	d21_10	1 = Sí / 2 = No	Lavarropa
+	d21_11	1 = Sí / 2 = No	Secadora de ropa
+	d21_12	1 = Sí / 2 = No	Lavavajillas
+	d21_13	1 = Sí / 2 = No	Horno microondas
+	d21_14	1 = Sí / 2 = No	Equipo de aire acondicionado
+	d21_15	1 = Sí / 2 = No	Microcomputador (incluye laptop)
+PERSONAS PAGAS PARA REALIZAR TAREAS DOMÉSTICAS O DE CUIDADOS	
+	d181	1 = Si / 2 = No
+
+
+
+PERSONAS DE 14 o MÁS AÑOS	
+	d23	Nº	Número de personas de 14 o más años 														
+MENORES DE 14 AÑOS	
+	d24	Nº	Número de personas menores de 14 años 
+						
+TOTAL DE PERSONAS DEL HOGAR	
+	d25	Nº	Número total de personas del hogar 									
+
+CANTIDAD DE HOMBRES	ht1	Nº
+CANTIDAD DE MUJERES	ht2	Nº
+
+
+CANTIDAD DE MENORES DE 14 AÑOS	ht3  															
+

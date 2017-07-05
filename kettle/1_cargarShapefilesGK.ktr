@@ -98,7 +98,7 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>63</xloc>
+      <xloc>62</xloc>
       <yloc>309</yloc>
       <draw>Y</draw>
       </GUI>
@@ -126,7 +126,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>62</xloc>
-      <yloc>194</yloc>
+      <yloc>195</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
