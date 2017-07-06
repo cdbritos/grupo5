@@ -1,0 +1,11 @@
+WITH
+SET [~COLUMNS] AS
+    {[Tiempo.Fecha-Año].[2011], [Tiempo.Fecha-Año].[2012], [Tiempo.Fecha-Año].[2013], [Tiempo.Fecha-Año].[2014], [Tiempo.Fecha-Año].[2015], [Tiempo.Fecha-Año].[2016]}
+SET [~ROWS_Contaminantes_Contaminantes.contaminantes] AS
+    {[Contaminantes.contaminantes].[Contaminante].Members}
+SET [~ROWS_Ubicación Geográfica_Ubicación Geográfica.UbicaciónGeográfica] AS
+    {[Ubicación Geográfica.UbicaciónGeográfica].[Barrio].Members}
+SELECT
+NON EMPTY CrossJoin([~COLUMNS], {[Measures].[polucion]}) ON COLUMNS,
+NON EMPTY NonEmptyCrossJoin([~ROWS_Contaminantes_Contaminantes.contaminantes], [~ROWS_Ubicación Geográfica_Ubicación Geográfica.UbicaciónGeográfica]) ON ROWS
+FROM [mediciones]
