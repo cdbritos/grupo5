@@ -133,13 +133,35 @@ ALTER TABLE public.problemas
   OWNER TO postgres;
 
 
+CREATE TABLE public.hogar
+(
+  idHogar integer NOT NULL,
+  nomHogar character varying(50),
+  idNivelConfort smallint NOT NULL,,
+  nomNivelConfort character varying(50),
+  idAsentamiento smallint NOT NULL,,
+  nomAsentamiento character varying(2),
+  idTenencia smallint NOT NULL,,
+  nomTenencia character varying(50),
+  idTipoVivienda smallint NOT NULL,,
+  nomTipoVivienda character varying(50),
+  CONSTRAINT pkey_hogar PRIMARY KEY (idHogar)
+)
+WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.hogar
+  OWNER TO postgres;
+
+
 CREATE TABLE public.bridgeHogarProblemas
 (
 idproblema smallint NOT NULL,
 idhogar integer NOT NULL,
 CONSTRAINT pkey_bridgeHogarProblemas PRIMARY KEY (idproblema, idhogar),
 CONSTRAINT fk_idhogar FOREIGN KEY (idhogar)
-      REFERENCES public.hogares (idhogar) MATCH SIMPLE
+      REFERENCES public.hogar (idhogar) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
 CONSTRAINT fk_idproblema FOREIGN KEY (idproblema)
       REFERENCES public.problemas (idproblema) MATCH SIMPLE
@@ -150,10 +172,6 @@ CONSTRAINT fk_idproblema FOREIGN KEY (idproblema)
 
 ALTER TABLE public.bridgeHogarProblemas
   OWNER TO postgres;
-
-
-
-
 
 
 CREATE TABLE public.mediciones
@@ -186,4 +204,38 @@ WITH (
 );
 ALTER TABLE public.mediciones
   OWNER TO postgres;
+
+
+CREATE TABLE public.afectados
+(
+  idhogar integer NOT NULL,
+  idbarrio double precision NOT NULL,
+  idfecha character varying(10) NOT NULL,
+  idcontaminante character varying(4) NOT NULL,
+  cantPersonas bigint,
+  cantPersonasMas14 bigint,
+  cantPersonasMenos14 bigint,
+  cantMujeres bigint,
+  cantHombres bigint,
+  polucion bigint,
+  CONSTRAINT pkey_afectados PRIMARY KEY (idhogar, idbarrio, idfecha, idcontaminante),
+  CONSTRAINT fk_idcontaminantes FOREIGN KEY (idcontaminante)
+      REFERENCES public.contaminantes (idcontaminante) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_idfecha FOREIGN KEY (idfecha)
+      REFERENCES public.tiempo (idfecha) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_idhogar FOREIGN KEY (idhogar)
+      REFERENCES public.hogar (idhogar) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_idbarrio FOREIGN KEY (idbarrio )
+      REFERENCES public.ubicaciongeog_1 (idbarrio ) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.afectados
+  OWNER TO postgres;
+
 
