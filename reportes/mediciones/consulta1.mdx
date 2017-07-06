@@ -1,0 +1,7 @@
+WITH
+SET [~ROWS] AS
+    {[Ubicación Geográfica.UbicaciónGeográfica].[Barrio].Members}
+SELECT
+NON EMPTY {[Measures].[cantLineas], [Measures].[cantContaminantes]} ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [mediciones]
