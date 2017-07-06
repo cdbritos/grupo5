@@ -502,11 +502,6 @@
     </hop>
     <hop>
       <from>nullIf2</from>
-      <to>GenerarXMLConfort</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>nullIf2</from>
       <to>generarXMLProblemas</to>
       <enabled>Y</enabled>
     </hop>
@@ -526,13 +521,38 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>GetTipoProblemas</from>
-      <to>Tabla Problemas</to>
+      <from>getColumnProblema</from>
+      <to>JoinIdProblema</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>getColumnProblema</from>
-      <to>JoinIdProblema</to>
+      <from>nullIf2</from>
+      <to>nullTo0</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>nullTo0</from>
+      <to>cantidadElectrodomesticos</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cantidadElectrodomesticos</from>
+      <to>nivel_confort</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EliminarColumnas</from>
+      <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>nivel_confort</from>
+      <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -593,7 +613,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>624</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -670,14 +690,14 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>368</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>GenerarXMLConfort</name>
-    <type>AddXML</type>
+    <name>JoinIdProblema</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -686,309 +706,29 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <encoding>UTF-8</encoding>
-    <valueName>xml_confort</valueName>
-    <xml_repeat_element>Row</xml_repeat_element>
-    <file>
-      <omitXMLheader>Y</omitXMLheader>
-      <omitNullValues>Y</omitNullValues>
-    </file>
-    <fields>
-      <field>
-        <name>calefon</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>calentador</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>refrigerador</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>tv</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>nro_tv</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>lcd</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>nro_lcd</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>radio</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>cable</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>deco_digital</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>deco_hd</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>deco_otro</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>dvd</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>video</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>lavarropa</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>secarropa</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>lavavajilla</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>microondas</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>aire_acondicionado</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>micro_computador</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-      <field>
-        <name>servicio_domestico</name>
-        <element/>
-        <type>Number</type>
-        <format> 0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>1</length>
-        <precision>0</precision>
-        <attribute>N</attribute>
-        <attributeParentName/>
-        </field>
-    </fields>
+    <connection>bd_dwh</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>problemas</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>colProb</name>
+        <field>column_problema</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>idproblema</name>
+        <rename>idproblema</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -997,8 +737,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>208</yloc>
+      <xloc>896</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1050,9 +790,13 @@
       <schema_name/>
     </partitioning>
     <fields>      <field>        <name>id_hogar</name>
+        <rename/>
       </field>      <field>        <name>CCZ</name>
+        <rename/>
       </field>      <field>        <name>BARRIO</name>
+        <rename/>
       </field>      <field>        <name>NOMBARRIO</name>
+        <rename/>
       </field>      <field>        <name>C1</name>
         <rename>tipo_vivienda</rename>
       </field>      <field>        <name>C5_1</name>
@@ -1089,14 +833,6 @@
         <rename>calentador</rename>
       </field>      <field>        <name>D21_3</name>
         <rename>refrigerador</rename>
-      </field>      <field>        <name>D21_4</name>
-        <rename>tv</rename>
-      </field>      <field>        <name>D21_4_1</name>
-        <rename>nro_tv</rename>
-      </field>      <field>        <name>D21_5</name>
-        <rename>lcd</rename>
-      </field>      <field>        <name>D21_5_1</name>
-        <rename>nro_lcd</rename>
       </field>      <field>        <name>D21_6</name>
         <rename>radio</rename>
       </field>      <field>        <name>D21_7</name>
@@ -1125,6 +861,14 @@
         <rename>micro_computador</rename>
       </field>      <field>        <name>D181</name>
         <rename>servicio_domestico</rename>
+      </field>      <field>        <name>D21_4</name>
+        <rename>tv</rename>
+      </field>      <field>        <name>D21_4_1</name>
+        <rename>nro_tv</rename>
+      </field>      <field>        <name>D21_5</name>
+        <rename>lcd</rename>
+      </field>      <field>        <name>D21_5_1</name>
+        <rename>nro_lcd</rename>
       </field>      <field>        <name>D23</name>
         <rename>cant_mayores14</rename>
       </field>      <field>        <name>D24</name>
@@ -1434,8 +1178,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>80</yloc>
+      <xloc>720</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1637,7 +1381,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>80</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1688,7 +1432,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>816</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1942,8 +1686,8 @@
     </step>
 
   <step>
-    <name>GetTipoProblemas</name>
-    <type>getXMLData</type>
+    <name>Calculator</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1952,87 +1696,6 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>&#x24;&#x7b;DISDW_MAPPINGS_PATH&#x7d;problemas.xml</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>id</name>
-        <xpath>id</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>nombre</name>
-        <xpath>nombre</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>column</name>
-        <xpath>column</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#x2f;problemas&#x2f;problema</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2041,14 +1704,245 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>16</yloc>
+      <xloc>320</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Tabla Problemas</name>
+    <name>nullTo0</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+      <replaceAllByValue>0</replaceAllByValue>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+      <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>calefon</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>calentador</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>refrigerador</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>radio</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>cable</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>deco_digital</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>deco_hd</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>deco_otro</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>dvd</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>video</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>lavarropa</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>secarropa</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>lavavajilla</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>microondas</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>aire_acondicionado</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>micro_computador</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>servicio_domestico</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>tv</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>nro_tv</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>lcd</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>nro_lcd</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>cantidadElectrodomesticos</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+       <formula><field_name>cant_electrodomesticos</field_name>
+<formula_string>&#x5b;aire_acondicionado&#x5d;&#x2b;&#x5b;cable&#x5d;&#x2b;&#x5b;calefon&#x5d;&#x2b;&#x5b;calentador&#x5d;&#x2b;&#x5b;deco_digital&#x5d;&#x2b;&#x5b;deco_hd&#x5d;&#x2b;&#x5b;deco_otro&#x5d;&#x2b;&#x5b;dvd&#x5d;&#x2b;&#x5b;lavarropa&#x5d;&#x2b;&#x5b;lavavajilla&#x5d;&#x2b;&#x5b;video&#x5d;&#x2b;&#x5b;micro_computador&#x5d;&#x2b;&#x5b;microondas&#x5d;&#x2b;&#x5b;radio&#x5d;&#x2b;&#x5b;refrigerador&#x5d;&#x2b;&#x5b;secarropa&#x5d;&#x2b;&#x5b;tv&#x5d;&#x2a;&#x5b;nro_tv&#x5d;&#x2b;&#x5b;lcd&#x5d;&#x2a;&#x5b;nro_lcd&#x5d;</formula_string>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+       <formula><field_name>disdw_nombre_asen</field_name>
+<formula_string>IF&#x28;&#x5b;asentamiento&#x5d;&#x3d;1&#x3b;&#x22;SI&#x22;&#x3b;&#x22;NO&#x27;&#x22;&#x29;&#xa;</formula_string>
+<value_type>String</value_type>
+<value_length>2</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>nivel_confort</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+       <formula><field_name>nivel_confort</field_name>
+<formula_string>IF&#x28;&#x5b;cant_electrodomesticos&#x5d;&#x3c;&#x3d;3&#x3b;1&#x3b;&#xa;IF&#x28;&#x5b;cant_electrodomesticos&#x5d;&#x3c;&#x3d;7&#x3b;2&#x3b;&#xa;IF&#x28;&#x5b;cant_electrodomesticos&#x5d;&#x3c;&#x3d;11&#x3b;3&#x3b;&#xa;IF&#x28;&#x5b;cant_electrodomesticos&#x5d;&#x3c;&#x3d;15&#x3b;4&#x3b;&#xa;IF&#x28;&#x5b;servicio_domestico&#x5d;&#x3d;1&#x3b;6&#x3b;5&#x29;&#x29;&#x29;&#x29;&#x29;</formula_string>
+<value_type>Integer</value_type>
+<value_length>1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>CreateBridgeHogarProblema</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2063,9 +1957,9 @@
     <table>problemas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
-    <ignore_errors>Y</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -2076,18 +1970,6 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
-        <field>
-          <column_name>idproblema</column_name>
-          <stream_name>id</stream_name>
-        </field>
-        <field>
-          <column_name>nom_problema</column_name>
-          <stream_name>nombre</stream_name>
-        </field>
-        <field>
-          <column_name>column_problema</column_name>
-          <stream_name>column</stream_name>
-        </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -2097,15 +1979,49 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>112</yloc>
+      <xloc>992</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>JoinIdProblema</name>
-    <type>DBLookup</type>
+    <name>Merge Join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<join_type>INNER</join_type>
+<step1>nivel_confort</step1>
+<step2>EliminarColumnas</step2>
+    <keys_1>
+      <key>id_hogar</key>
+    </keys_1>
+    <keys_2>
+      <key>id_hogar</key>
+    </keys_2>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2115,28 +2031,24 @@
       <schema_name/>
     </partitioning>
     <connection>bd_dwh</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>problemas</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>colProb</name>
-        <field>column_problema</field>
-        <condition>LIKE</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>idproblema</name>
-        <rename>id_problema</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
+    <schema/>
+    <table/>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2145,8 +2057,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>112</yloc>
+      <xloc>864</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

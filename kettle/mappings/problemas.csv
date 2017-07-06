@@ -1,0 +1,14 @@
+id,descripcion,columna
+1,Humedades en techos,p_humedad_techo
+2,Goteras en techos,p_goteras
+3,Muros agrietados,p_grietas_muro
+4,Puertas o ventanas en mal estado,p_puertas_mal
+5,Grietas en pisos,p_grietas_piso
+6,Caída de revoque en paredes o techos,p_caida_revoque
+7,Cielos rasos desprendidos,p_cielo_raso_desprendido
+8,Poca luz solar,p_poca_luz
+9,Escasa ventilación,p_escasa_ventilacion
+10,Se inunda cuando llueve,p_inunda
+11,Peligro de derrumbe,p_derrumbe
+12,Humedades en los cimientos,p_humedad_cimiento
+

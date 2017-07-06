@@ -122,8 +122,8 @@ ALTER TABLE public.tiempo
 CREATE TABLE public.problemas
 (
 idproblema smallint NOT NULL,
-nom_problema character varying(50) NOT NULL,
-column_problema character varying(20) NOT NULL,
+nom_problema character varying(36) NOT NULL,
+column_problema character varying(24) NOT NULL,
 CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
 )WITH (
   OIDS=FALSE
@@ -131,6 +131,29 @@ CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
 
 ALTER TABLE public.problemas
   OWNER TO postgres;
+
+
+CREATE TABLE public.bridgeHogarProblemas
+(
+idproblema smallint NOT NULL,
+idhogar integer NOT NULL,
+CONSTRAINT pkey_bridgeHogarProblemas PRIMARY KEY (idproblema, idhogar),
+CONSTRAINT fk_idhogar FOREIGN KEY (idhogar)
+      REFERENCES public.hogares (idhogar) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+CONSTRAINT fk_idproblema FOREIGN KEY (idproblema)
+      REFERENCES public.problemas (idproblema) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.bridgeHogarProblemas
+  OWNER TO postgres;
+
+
+
+
 
 
 CREATE TABLE public.mediciones
