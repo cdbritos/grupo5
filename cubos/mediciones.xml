@@ -1,0 +1,72 @@
+<Schema name="dwh">
+  <Cube name="mediciones" visible="true" cache="true" enabled="true">
+    <Table name="vw_fact_mediciones" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idmetodo" highCardinality="false" name="M&#233;todos">
+      <Hierarchy name="M&#233;todos de Monitoreo" visible="true" hasAll="true" primaryKey="idmetodo">
+        <Table name="metodos" schema="public">
+        </Table>
+        <Level name="M&#233;todo" visible="true" table="metodos" column="idmetodo" nameColumn="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idcontaminante" highCardinality="false" name="Contaminantes">
+      <Hierarchy name="contaminantes" visible="true" hasAll="true">
+        <Table name="contaminantes" schema="public">
+        </Table>
+        <Level name="Tipo" visible="true" table="contaminantes" column="idtipo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipo">
+        </Level>
+        <Level name="Subtipo" visible="true" table="contaminantes" column="idsubtipo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomsubtipo">
+        </Level>
+        <Level name="Contaminante" visible="true" table="contaminantes" column="idcontaminante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomcontaminante">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idestacion" highCardinality="false" name="Ubicaci&#243;n Geogr&#225;fica">
+      <Hierarchy name="Centro comunal" visible="true" hasAll="true">
+        <Table name="ccz" schema="public">
+        </Table>
+        <Level name="Centro Comunal" visible="true" column="idccz" nameColumn="nombreccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombreccz">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Ubicaci&#243;nGeogr&#225;fica" visible="true" hasAll="false">
+        <Table name="ubicaciongeog_1" schema="public">
+        </Table>
+        <Level name="Barrio" visible="true" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+        </Level>
+        <Level name="Estacion" visible="true" column="idestacion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacion">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idlinea" highCardinality="false" name="Lineas">
+      <Hierarchy name="lineas" visible="true" hasAll="true">
+        <Table name="lineas" schema="public">
+        </Table>
+        <Level name="L&#237;nea" visible="true" table="lineas" column="idlinea" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomlinea">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idfecha" highCardinality="false" name="Tiempo">
+      <Hierarchy name="Fecha-A&#241;o" visible="true" hasAll="true">
+        <Table name="tiempo" schema="public">
+        </Table>
+        <Level name="A&#241;o" visible="true" column="anio" nameColumn="anio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="anio">
+        </Level>
+        <Level name="Semestre" visible="false" column="semestre" nameColumn="semestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="semestre">
+        </Level>
+        <Level name="Trimestre" visible="false" column="trimestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="trimestre">
+        </Level>
+        <Level name="Mes" visible="true" column="id_mes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_mes">
+        </Level>
+        <Level name="Fecha" visible="true" column="idfecha" nameColumn="fecha" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="polucion" column="polucion" datatype="Numeric" aggregator="avg" caption="Poluci&#243;n" visible="true">
+    </Measure>
+    <Measure name="cantLineas" column="idlinea" datatype="Integer" aggregator="distinct-count" caption="Cantidad de L&#237;neas" visible="true">
+    </Measure>
+    <Measure name="cantContaminantes" column="idcontaminante" datatype="Integer" aggregator="distinct-count" caption="Cantidad de Contaminantes" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
