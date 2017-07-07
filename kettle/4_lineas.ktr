@@ -438,13 +438,13 @@
   </notepads>
   <connection>
     <name>baseAuxiliar</name>
-    <server>localhost</server>
+    <server>&#x24;&#x7b;DISDW_AUX_DB_HOST&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>auxiliar</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>&#x24;&#x7b;DISDW_AUX_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_AUX_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_AUX_DB_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -452,7 +452,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -462,13 +462,13 @@
   </connection>
   <connection>
     <name>bd_dwh</name>
-    <server>localhost</server>
+    <server>&#x24;&#x7b;DISDW_DWH_DB_HOST&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwh</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>&#x24;&#x7b;DISDW_DWH_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_AUX_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_AUX_DB_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -476,7 +476,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -1084,7 +1084,7 @@
     <schema/>
     <table>lineas</table>
     <commit>1000</commit>
-    <truncate>Y</truncate>
+    <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
@@ -1116,7 +1116,7 @@
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
-      <yloc>352</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

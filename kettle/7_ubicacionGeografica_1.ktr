@@ -438,13 +438,13 @@
   </notepads>
   <connection>
     <name>baseAuxiliar</name>
-    <server>localhost</server>
+    <server>&#x24;&#x7b;DISDW_AUX_DB_HOST&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>auxiliar</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>&#x24;&#x7b;DISDW_AUX_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_AUX_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_AUX_DB_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -452,7 +452,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_AUX_DB_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -462,13 +462,13 @@
   </connection>
   <connection>
     <name>bd_dwh</name>
-    <server>localhost</server>
+    <server>&#x24;&#x7b;DISDW_DWH_DB_HOST&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwh</database>
-    <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79af7edf9ea6db</password>
+    <database>&#x24;&#x7b;DISDW_DWH_DB_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DISDW_DWH_DB_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DISDW_DWH_DB_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -476,7 +476,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DISDW_DWH_DB_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -1897,7 +1897,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <file_dbf>C&#x3a;&#x5c;grupo5&#x5c;fuentes&#x5c;ecdh&#x5c;2013_DBF&#x5c;H_2013_TERCEROS.dbf</file_dbf>
+    <file_dbf>&#x24;&#x7b;DISDW_ECDH_PATH&#x7d;H_&#x24;&#x7b;DISDW_ECDH_ANIO&#x7d;_Terceros.dbf</file_dbf>
     <limit>0</limit>
     <add_rownr>N</add_rownr>
     <field_rownr/>
@@ -1932,7 +1932,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C&#x3a;&#x5c;grupo5&#x5c;fuentes&#x5c;metodos&#x5c;aire-estaciones.csv</filename>
+    <filename>&#x24;&#x7b;DISDW_FUENTES_MEDICIONES_PATH&#x7d;aire-estaciones.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>

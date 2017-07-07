@@ -430,7 +430,7 @@
     <created_date>2017&#x2f;07&#x2f;06 21&#x3a;17&#x3a;43.300</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017&#x2f;07&#x2f;06 21&#x3a;17&#x3a;43.300</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -461,106 +461,26 @@
   </connection>
   <order>
     <hop>
-      <from>Datos Encuesta</from>
-      <to>ObtenerEncuestasMontevideo</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>NombreCCZ</from>
       <to>TableUbicGeo2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows by barrio</from>
-      <to>DeleteDuplicados</to>
+      <from>ccz_barrio</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>DeleteDuplicados</from>
-      <to>NombreCCZ</to>
+      <from>Replace in string</from>
+      <to>Select Datos Barrio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select Datos Barrio</from>
-      <to>Sort rows by barrio</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ObtenerEncuestasMontevideo</from>
-      <to>Select Datos Barrio</to>
+      <to>NombreCCZ</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Datos Encuesta</name>
-    <type>XBaseInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file_dbf>&#x24;&#x7b;DISDW_ECDH_PATH&#x7d;H_&#x24;&#x7b;DISDW_ECDH_ANIO&#x7d;_Terceros.dbf</file_dbf>
-    <limit>0</limit>
-    <add_rownr>Y</add_rownr>
-    <field_rownr>id_hogar</field_rownr>
-    <include>N</include>
-    <include_field/>
-    <charset_name>UTF-8</charset_name>
-    <accept_filenames>N</accept_filenames>
-    <accept_field/>
-    <accept_stepname/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>ObtenerEncuestasMontevideo</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-<send_true_to>Select Datos Barrio</send_true_to>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>DPTO</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>Integer</type><text>1</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>&#x23;&#x23;</mask></value> </condition>
-    </compare>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
   <step>
     <name>NombreCCZ</name>
     <type>Formula</type>
@@ -572,8 +492,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-       <formula><field_name>nom_ccz</field_name>
-<formula_string>&#x22;CCZ &#x22; &#x26; TEXT&#x28;&#x5b;CCZ&#x5d;&#x29;</formula_string>
+       <formula><field_name>id_barrio</field_name>
+<formula_string>&#x5b;NROBARRIO&#x5d; &#x26; &#x22;_&#x22; &#x26; TEXT&#x28;&#x5b;CCZ&#x5d;&#x3b;&#x22;00&#x22;&#x29;</formula_string>
 <value_type>String</value_type>
 <value_length>6</value_length>
 <value_precision>-1</value_precision>
@@ -588,14 +508,14 @@
     </remotesteps>
     <GUI>
       <xloc>368</xloc>
-      <yloc>80</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Sort rows by barrio</name>
-    <type>SortRows</type>
+    <name>Select Datos Barrio</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -604,24 +524,50 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>BARRIO</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema/>
+    <fields>      <field>        <name>GID</name>
+        <rename/>
+      </field>      <field>        <name>ZONA_LEGAL</name>
+        <rename/>
+      </field>      <field>        <name>NROBARRIO</name>
+        <rename/>
+      </field>      <field>        <name>BARRIO</name>
+        <rename/>
+      </field>      <field>        <name>CODBA</name>
+        <rename/>
+      </field>      <field>        <name>CCZ</name>
+        <rename/>
+      </field>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>NROBARRIO</name>
+        <rename>NROBARRIO</rename>
+        <type>Integer</type>
+        <length>2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>CCZ</name>
+        <rename>CCZ</rename>
+        <type>Integer</type>
+        <length>2</length>
+        <precision>-2</precision>
+        <conversion_mask>00</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -630,38 +576,7 @@
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>DeleteDuplicados</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>BARRIO</name>
-        <case_insensitive>Y</case_insensitive>
-        </field>      </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>192</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -700,16 +615,20 @@
           <stream_name>CCZ</stream_name>
         </field>
         <field>
-          <column_name>idbarrio</column_name>
-          <stream_name>BARRIO</stream_name>
+          <column_name>numbarrio</column_name>
+          <stream_name>NROBARRIO</stream_name>
         </field>
         <field>
           <column_name>nombarrio</column_name>
-          <stream_name>NOMBARRIO</stream_name>
+          <stream_name>BARRIO</stream_name>
         </field>
         <field>
           <column_name>nombreccz</column_name>
-          <stream_name>nom_ccz</stream_name>
+          <stream_name>ZONA_LEGAL</stream_name>
+        </field>
+        <field>
+          <column_name>idbarrio</column_name>
+          <stream_name>id_barrio</stream_name>
         </field>
     </fields>
     <cluster_schema/>
@@ -727,8 +646,172 @@
     </step>
 
   <step>
-    <name>Select Datos Barrio</name>
-    <type>SelectValues</type>
+    <name>ccz_barrio</name>
+    <type>TextFileInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <accept_filenames>N</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field/>
+    <accept_stepname/>
+    <separator>&#x3b;</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar/>
+    <header>Y</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field/>
+    <format>DOS</format>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>&#x24;&#x7b;DISDW_FUENTES_UBICACION_GEOGRAFICA_PATH&#x7d;ccz_barrio.txt</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>CSV</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>GID</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>ZONA_LEGAL</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>NROBARRIO</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>BARRIO</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>CODBA</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>es_UY</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -737,506 +820,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>      <field>        <name>ANIO</name>
-        <rename/>
-      </field>      <field>        <name>NUMERO</name>
-        <rename/>
-      </field>      <field>        <name>DPTO</name>
-        <rename/>
-      </field>      <field>        <name>NOMDPTO</name>
-        <rename/>
-      </field>      <field>        <name>SECC</name>
-        <rename/>
-      </field>      <field>        <name>SEGM</name>
-        <rename/>
-      </field>      <field>        <name>LOC_AGR_13</name>
-        <rename/>
-      </field>      <field>        <name>NOMLOCAG13</name>
-        <rename/>
-      </field>      <field>        <name>CCZ</name>
-        <rename/>
-      </field>      <field>        <name>BARRIO</name>
-        <rename/>
-      </field>      <field>        <name>NOMBARRIO</name>
-        <rename/>
-      </field>      <field>        <name>MES</name>
-        <rename/>
-      </field>      <field>        <name>ESTRED13</name>
-        <rename/>
-      </field>      <field>        <name>REGION_3</name>
-        <rename/>
-      </field>      <field>        <name>REGION_4</name>
-        <rename/>
-      </field>      <field>        <name>PESOANO</name>
-        <rename/>
-      </field>      <field>        <name>PESOTRI</name>
-        <rename/>
-      </field>      <field>        <name>PESOSEM</name>
-        <rename/>
-      </field>      <field>        <name>PESOMEN</name>
-        <rename/>
-      </field>      <field>        <name>C1</name>
-        <rename/>
-      </field>      <field>        <name>C2</name>
-        <rename/>
-      </field>      <field>        <name>C3</name>
-        <rename/>
-      </field>      <field>        <name>C4</name>
-        <rename/>
-      </field>      <field>        <name>C5_1</name>
-        <rename/>
-      </field>      <field>        <name>C5_2</name>
-        <rename/>
-      </field>      <field>        <name>C5_3</name>
-        <rename/>
-      </field>      <field>        <name>C5_4</name>
-        <rename/>
-      </field>      <field>        <name>C5_5</name>
-        <rename/>
-      </field>      <field>        <name>C5_6</name>
-        <rename/>
-      </field>      <field>        <name>C5_7</name>
-        <rename/>
-      </field>      <field>        <name>C5_8</name>
-        <rename/>
-      </field>      <field>        <name>C5_9</name>
-        <rename/>
-      </field>      <field>        <name>C5_10</name>
-        <rename/>
-      </field>      <field>        <name>C5_11</name>
-        <rename/>
-      </field>      <field>        <name>C5_12</name>
-        <rename/>
-      </field>      <field>        <name>C6</name>
-        <rename/>
-      </field>      <field>        <name>D8_1</name>
-        <rename/>
-      </field>      <field>        <name>D8_2</name>
-        <rename/>
-      </field>      <field>        <name>D8_3</name>
-        <rename/>
-      </field>      <field>        <name>D8_4</name>
-        <rename/>
-      </field>      <field>        <name>D9</name>
-        <rename/>
-      </field>      <field>        <name>D10</name>
-        <rename/>
-      </field>      <field>        <name>D11</name>
-        <rename/>
-      </field>      <field>        <name>D12</name>
-        <rename/>
-      </field>      <field>        <name>D13</name>
-        <rename/>
-      </field>      <field>        <name>D14</name>
-        <rename/>
-      </field>      <field>        <name>D15</name>
-        <rename/>
-      </field>      <field>        <name>D16</name>
-        <rename/>
-      </field>      <field>        <name>D18</name>
-        <rename/>
-      </field>      <field>        <name>D19</name>
-        <rename/>
-      </field>      <field>        <name>D20</name>
-        <rename/>
-      </field>      <field>        <name>D21_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_2</name>
-        <rename/>
-      </field>      <field>        <name>D21_3</name>
-        <rename/>
-      </field>      <field>        <name>D21_4</name>
-        <rename/>
-      </field>      <field>        <name>D21_4_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_5</name>
-        <rename/>
-      </field>      <field>        <name>D21_5_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_6</name>
-        <rename/>
-      </field>      <field>        <name>D21_7</name>
-        <rename/>
-      </field>      <field>        <name>D21_7_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_7_2</name>
-        <rename/>
-      </field>      <field>        <name>D21_7_3</name>
-        <rename/>
-      </field>      <field>        <name>D21_9</name>
-        <rename/>
-      </field>      <field>        <name>D21_8</name>
-        <rename/>
-      </field>      <field>        <name>D21_10</name>
-        <rename/>
-      </field>      <field>        <name>D21_11</name>
-        <rename/>
-      </field>      <field>        <name>D21_12</name>
-        <rename/>
-      </field>      <field>        <name>D21_13</name>
-        <rename/>
-      </field>      <field>        <name>D21_14</name>
-        <rename/>
-      </field>      <field>        <name>D21_15</name>
-        <rename/>
-      </field>      <field>        <name>D21_15_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_15_2</name>
-        <rename/>
-      </field>      <field>        <name>D21_15_3</name>
-        <rename/>
-      </field>      <field>        <name>D21_15_4</name>
-        <rename/>
-      </field>      <field>        <name>D21_16</name>
-        <rename/>
-      </field>      <field>        <name>D21_16_1</name>
-        <rename/>
-      </field>      <field>        <name>D21_16_2</name>
-        <rename/>
-      </field>      <field>        <name>D21_16_3</name>
-        <rename/>
-      </field>      <field>        <name>D21_17</name>
-        <rename/>
-      </field>      <field>        <name>D21_18</name>
-        <rename/>
-      </field>      <field>        <name>D21_19</name>
-        <rename/>
-      </field>      <field>        <name>D181</name>
-        <rename/>
-      </field>      <field>        <name>D229</name>
-        <rename/>
-      </field>      <field>        <name>D230</name>
-        <rename/>
-      </field>      <field>        <name>D231</name>
-        <rename/>
-      </field>      <field>        <name>D232</name>
-        <rename/>
-      </field>      <field>        <name>D184</name>
-        <rename/>
-      </field>      <field>        <name>D184_1</name>
-        <rename/>
-      </field>      <field>        <name>D23</name>
-        <rename/>
-      </field>      <field>        <name>D24</name>
-        <rename/>
-      </field>      <field>        <name>D25</name>
-        <rename/>
-      </field>      <field>        <name>H155</name>
-        <rename/>
-      </field>      <field>        <name>H155_1</name>
-        <rename/>
-      </field>      <field>        <name>H156</name>
-        <rename/>
-      </field>      <field>        <name>H156_1</name>
-        <rename/>
-      </field>      <field>        <name>H157</name>
-        <rename/>
-      </field>      <field>        <name>H157_1</name>
-        <rename/>
-      </field>      <field>        <name>H252</name>
-        <rename/>
-      </field>      <field>        <name>H252_1</name>
-        <rename/>
-      </field>      <field>        <name>H158_1</name>
-        <rename/>
-      </field>      <field>        <name>H158_2</name>
-        <rename/>
-      </field>      <field>        <name>H159</name>
-        <rename/>
-      </field>      <field>        <name>H160</name>
-        <rename/>
-      </field>      <field>        <name>H160_1</name>
-        <rename/>
-      </field>      <field>        <name>H160_2</name>
-        <rename/>
-      </field>      <field>        <name>H161</name>
-        <rename/>
-      </field>      <field>        <name>H162</name>
-        <rename/>
-      </field>      <field>        <name>H163_1</name>
-        <rename/>
-      </field>      <field>        <name>H163_2</name>
-        <rename/>
-      </field>      <field>        <name>H164</name>
-        <rename/>
-      </field>      <field>        <name>H165</name>
-        <rename/>
-      </field>      <field>        <name>H227</name>
-        <rename/>
-      </field>      <field>        <name>H166</name>
-        <rename/>
-      </field>      <field>        <name>H167</name>
-        <rename/>
-      </field>      <field>        <name>H168_1</name>
-        <rename/>
-      </field>      <field>        <name>H168_2</name>
-        <rename/>
-      </field>      <field>        <name>H169</name>
-        <rename/>
-      </field>      <field>        <name>H170_1</name>
-        <rename/>
-      </field>      <field>        <name>H170_2</name>
-        <rename/>
-      </field>      <field>        <name>H171</name>
-        <rename/>
-      </field>      <field>        <name>H171_1</name>
-        <rename/>
-      </field>      <field>        <name>H171_2</name>
-        <rename/>
-      </field>      <field>        <name>H172</name>
-        <rename/>
-      </field>      <field>        <name>H172_1</name>
-        <rename/>
-      </field>      <field>        <name>H173</name>
-        <rename/>
-      </field>      <field>        <name>H173_1</name>
-        <rename/>
-      </field>      <field>        <name>I228</name>
-        <rename/>
-      </field>      <field>        <name>I174</name>
-        <rename/>
-      </field>      <field>        <name>I259</name>
-        <rename/>
-      </field>      <field>        <name>I175</name>
-        <rename/>
-      </field>      <field>        <name>HT1</name>
-        <rename/>
-      </field>      <field>        <name>HT2</name>
-        <rename/>
-      </field>      <field>        <name>HT3</name>
-        <rename/>
-      </field>      <field>        <name>HT4</name>
-        <rename/>
-      </field>      <field>        <name>HT5</name>
-        <rename/>
-      </field>      <field>        <name>HT6</name>
-        <rename/>
-      </field>      <field>        <name>HT7</name>
-        <rename/>
-      </field>      <field>        <name>HT8</name>
-        <rename/>
-      </field>      <field>        <name>HT9</name>
-        <rename/>
-      </field>      <field>        <name>HT10</name>
-        <rename/>
-      </field>      <field>        <name>HT14</name>
-        <rename/>
-      </field>      <field>        <name>HT19</name>
-        <rename/>
-      </field>      <field>        <name>YHOG</name>
-        <rename/>
-      </field>      <field>        <name>YSVL</name>
-        <rename/>
-      </field>      <field>        <name>LI_06</name>
-        <rename/>
-      </field>      <field>        <name>LP_06</name>
-        <rename/>
-      </field>      <field>        <name>INDIGEN06</name>
-        <rename/>
-      </field>      <field>        <name>POBRE06</name>
-        <rename/>
-      </field>      <field>        <name>HT13</name>
-        <rename/>
-      </field>      <field>        <name>HT11</name>
-        <rename/>
-      </field>      <field>        <name>id_hogar</name>
-        <rename/>
-      </field>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>ANIO</name>
-      </remove>      <remove>        <name>NUMERO</name>
-      </remove>      <remove>        <name>DPTO</name>
-      </remove>      <remove>        <name>NOMDPTO</name>
-      </remove>      <remove>        <name>SECC</name>
-      </remove>      <remove>        <name>SEGM</name>
-      </remove>      <remove>        <name>LOC_AGR_13</name>
-      </remove>      <remove>        <name>NOMLOCAG13</name>
-      </remove>      <remove>        <name>MES</name>
-      </remove>      <remove>        <name>ESTRED13</name>
-      </remove>      <remove>        <name>REGION_3</name>
-      </remove>      <remove>        <name>REGION_4</name>
-      </remove>      <remove>        <name>PESOANO</name>
-      </remove>      <remove>        <name>PESOTRI</name>
-      </remove>      <remove>        <name>PESOSEM</name>
-      </remove>      <remove>        <name>PESOMEN</name>
-      </remove>      <remove>        <name>C1</name>
-      </remove>      <remove>        <name>C2</name>
-      </remove>      <remove>        <name>C3</name>
-      </remove>      <remove>        <name>C4</name>
-      </remove>      <remove>        <name>C5_1</name>
-      </remove>      <remove>        <name>C5_2</name>
-      </remove>      <remove>        <name>C5_3</name>
-      </remove>      <remove>        <name>C5_4</name>
-      </remove>      <remove>        <name>C5_5</name>
-      </remove>      <remove>        <name>C5_6</name>
-      </remove>      <remove>        <name>C5_7</name>
-      </remove>      <remove>        <name>C5_8</name>
-      </remove>      <remove>        <name>C5_9</name>
-      </remove>      <remove>        <name>C5_10</name>
-      </remove>      <remove>        <name>C5_11</name>
-      </remove>      <remove>        <name>C5_12</name>
-      </remove>      <remove>        <name>C6</name>
-      </remove>      <remove>        <name>D8_1</name>
-      </remove>      <remove>        <name>D8_2</name>
-      </remove>      <remove>        <name>D8_3</name>
-      </remove>      <remove>        <name>D8_4</name>
-      </remove>      <remove>        <name>D9</name>
-      </remove>      <remove>        <name>D10</name>
-      </remove>      <remove>        <name>D11</name>
-      </remove>      <remove>        <name>D12</name>
-      </remove>      <remove>        <name>D13</name>
-      </remove>      <remove>        <name>D14</name>
-      </remove>      <remove>        <name>D15</name>
-      </remove>      <remove>        <name>D16</name>
-      </remove>      <remove>        <name>D18</name>
-      </remove>      <remove>        <name>D19</name>
-      </remove>      <remove>        <name>D20</name>
-      </remove>      <remove>        <name>D21_1</name>
-      </remove>      <remove>        <name>D21_2</name>
-      </remove>      <remove>        <name>D21_3</name>
-      </remove>      <remove>        <name>D21_4</name>
-      </remove>      <remove>        <name>D21_4_1</name>
-      </remove>      <remove>        <name>D21_5</name>
-      </remove>      <remove>        <name>D21_5_1</name>
-      </remove>      <remove>        <name>D21_6</name>
-      </remove>      <remove>        <name>D21_7</name>
-      </remove>      <remove>        <name>D21_7_1</name>
-      </remove>      <remove>        <name>D21_7_2</name>
-      </remove>      <remove>        <name>D21_7_3</name>
-      </remove>      <remove>        <name>D21_9</name>
-      </remove>      <remove>        <name>D21_8</name>
-      </remove>      <remove>        <name>D21_10</name>
-      </remove>      <remove>        <name>D21_11</name>
-      </remove>      <remove>        <name>D21_12</name>
-      </remove>      <remove>        <name>D21_13</name>
-      </remove>      <remove>        <name>D21_14</name>
-      </remove>      <remove>        <name>D21_15</name>
-      </remove>      <remove>        <name>D21_15_1</name>
-      </remove>      <remove>        <name>D21_15_2</name>
-      </remove>      <remove>        <name>D21_15_3</name>
-      </remove>      <remove>        <name>D21_15_4</name>
-      </remove>      <remove>        <name>D21_16</name>
-      </remove>      <remove>        <name>D21_16_1</name>
-      </remove>      <remove>        <name>D21_16_2</name>
-      </remove>      <remove>        <name>D21_16_3</name>
-      </remove>      <remove>        <name>D21_17</name>
-      </remove>      <remove>        <name>D21_18</name>
-      </remove>      <remove>        <name>D21_19</name>
-      </remove>      <remove>        <name>D181</name>
-      </remove>      <remove>        <name>D229</name>
-      </remove>      <remove>        <name>D230</name>
-      </remove>      <remove>        <name>D231</name>
-      </remove>      <remove>        <name>D232</name>
-      </remove>      <remove>        <name>D184</name>
-      </remove>      <remove>        <name>D184_1</name>
-      </remove>      <remove>        <name>D23</name>
-      </remove>      <remove>        <name>D24</name>
-      </remove>      <remove>        <name>D25</name>
-      </remove>      <remove>        <name>H155</name>
-      </remove>      <remove>        <name>H155_1</name>
-      </remove>      <remove>        <name>H156</name>
-      </remove>      <remove>        <name>H156_1</name>
-      </remove>      <remove>        <name>H157</name>
-      </remove>      <remove>        <name>H157_1</name>
-      </remove>      <remove>        <name>H252</name>
-      </remove>      <remove>        <name>H252_1</name>
-      </remove>      <remove>        <name>H158_1</name>
-      </remove>      <remove>        <name>H158_2</name>
-      </remove>      <remove>        <name>H159</name>
-      </remove>      <remove>        <name>H160</name>
-      </remove>      <remove>        <name>H160_1</name>
-      </remove>      <remove>        <name>H160_2</name>
-      </remove>      <remove>        <name>H161</name>
-      </remove>      <remove>        <name>H162</name>
-      </remove>      <remove>        <name>H163_1</name>
-      </remove>      <remove>        <name>H163_2</name>
-      </remove>      <remove>        <name>H164</name>
-      </remove>      <remove>        <name>H165</name>
-      </remove>      <remove>        <name>H227</name>
-      </remove>      <remove>        <name>H166</name>
-      </remove>      <remove>        <name>H167</name>
-      </remove>      <remove>        <name>H168_1</name>
-      </remove>      <remove>        <name>H168_2</name>
-      </remove>      <remove>        <name>H169</name>
-      </remove>      <remove>        <name>H170_1</name>
-      </remove>      <remove>        <name>H170_2</name>
-      </remove>      <remove>        <name>H171</name>
-      </remove>      <remove>        <name>H171_1</name>
-      </remove>      <remove>        <name>H171_2</name>
-      </remove>      <remove>        <name>H172</name>
-      </remove>      <remove>        <name>H172_1</name>
-      </remove>      <remove>        <name>H173</name>
-      </remove>      <remove>        <name>H173_1</name>
-      </remove>      <remove>        <name>I228</name>
-      </remove>      <remove>        <name>I174</name>
-      </remove>      <remove>        <name>I259</name>
-      </remove>      <remove>        <name>I175</name>
-      </remove>      <remove>        <name>HT1</name>
-      </remove>      <remove>        <name>HT2</name>
-      </remove>      <remove>        <name>HT3</name>
-      </remove>      <remove>        <name>HT4</name>
-      </remove>      <remove>        <name>HT5</name>
-      </remove>      <remove>        <name>HT6</name>
-      </remove>      <remove>        <name>HT7</name>
-      </remove>      <remove>        <name>HT8</name>
-      </remove>      <remove>        <name>HT9</name>
-      </remove>      <remove>        <name>HT10</name>
-      </remove>      <remove>        <name>HT14</name>
-      </remove>      <remove>        <name>HT19</name>
-      </remove>      <remove>        <name>YHOG</name>
-      </remove>      <remove>        <name>YSVL</name>
-      </remove>      <remove>        <name>LI_06</name>
-      </remove>      <remove>        <name>LP_06</name>
-      </remove>      <remove>        <name>INDIGEN06</name>
-      </remove>      <remove>        <name>POBRE06</name>
-      </remove>      <remove>        <name>HT13</name>
-      </remove>      <remove>        <name>HT11</name>
-      </remove>      <remove>        <name>id_hogar</name>
-      </remove>      <meta>        <name>CCZ</name>
-        <rename>CCZ</rename>
-        <type>Integer</type>
-        <length>2</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>BARRIO</name>
-        <rename>BARRIO</rename>
-        <type>Integer</type>
-        <length>2</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>NOMBARRIO</name>
-        <rename>NOMBARRIO</rename>
-        <type>String</type>
-        <length>25</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>    <cluster_schema/>
+    <fields>
+      <field>
+        <in_stream_name>ZONA_LEGAL</in_stream_name>
+        <out_stream_name>CCZ</out_stream_name>
+        <use_regex>no</use_regex>
+        <replace_string>CCZ</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1244,8 +841,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>64</yloc>
+      <xloc>176</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

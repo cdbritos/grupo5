@@ -209,9 +209,10 @@ ALTER TABLE public.bridgeHogarProblemas
 
 CREATE TABLE public.ubicaciongeog_2
 (
-  idbarrio smallint NOT NULL,
+  idBarrio  character varying(6) NOT NULL,
+  numBarrio smallint NOT NULL,
   nombarrio character varying(30),
-  idccz smallint,
+  idccz smallint NOT NULL,
   nombreccz character varying(50),
   CONSTRAINT pk_ubicacion2 PRIMARY KEY (idbarrio)
 )
@@ -225,7 +226,7 @@ ALTER TABLE public.ubicaciongeog_2
 CREATE TABLE public.afectados
 (
   idhogar integer NOT NULL,
-  idbarrio smallint NOT NULL,
+  idbarrio character varying(6) NOT NULL,
   idfecha character varying(10) NOT NULL,
   idcontaminante character varying(4) NOT NULL,
   cantPersonas bigint,

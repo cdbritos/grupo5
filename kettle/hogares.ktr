@@ -461,11 +461,6 @@
   </connection>
   <order>
     <hop>
-      <from>Datos Encuesta</from>
-      <to>ObtenerEncuestasMontevideo</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>XMLTenencias</from>
       <to>mappingTenencia</to>
       <enabled>Y</enabled>
@@ -570,6 +565,11 @@
       <to>CreateBridgeHogarProblema</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Datos Encuesta</from>
+      <to>ObtenerEncuestasMontevideo</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Block hasta CargarHogar</name>
@@ -667,8 +667,8 @@
     </partitioning>
     <file_dbf>&#x24;&#x7b;DISDW_ECDH_PATH&#x7d;H_&#x24;&#x7b;DISDW_ECDH_ANIO&#x7d;_Terceros.dbf</file_dbf>
     <limit>0</limit>
-    <add_rownr>Y</add_rownr>
-    <field_rownr>id_hogar</field_rownr>
+    <add_rownr>N</add_rownr>
+    <field_rownr/>
     <include>N</include>
     <include_field/>
     <charset_name>UTF-8</charset_name>
@@ -684,7 +684,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>32</yloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -950,7 +950,7 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>160</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -966,7 +966,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>      <field>        <name>id_hogar</name>
+    <fields>      <field>        <name>NUMERO</name>
+        <rename>id_hogar</rename>
       </field>      <field>        <name>C1</name>
         <rename>tipo_vivienda</rename>
       </field>      <field>        <name>C5_1</name>
@@ -1040,7 +1041,22 @@
       </field>      <field>        <name>D21_5_1</name>
         <rename>nro_lcd</rename>
       </field>        <select_unspecified>N</select_unspecified>
-    </fields>    <cluster_schema/>
+      <meta>        <name>id_hogar</name>
+        <rename>id_hogar</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1049,7 +1065,7 @@
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>304</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

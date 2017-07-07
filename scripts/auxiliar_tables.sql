@@ -81,5 +81,19 @@ CREATE TABLE public.lineas_barrios
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE public.lineas_barrios
+ALTER TABLE public.lineas_barrios		
   OWNER TO postgres;
+
+CREATE TABLE public.ccz
+(
+  the_geom geometry,
+  gid character varying(8),
+  ccz character varying(8)
+)
+WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.ccz
+  OWNER TO postgres;
+

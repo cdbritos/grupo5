@@ -98,7 +98,7 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>62</xloc>
+      <xloc>63</xloc>
       <yloc>309</yloc>
       <draw>Y</draw>
       </GUI>
@@ -125,7 +125,7 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>62</xloc>
+      <xloc>63</xloc>
       <yloc>195</yloc>
       <draw>Y</draw>
       </GUI>
@@ -152,8 +152,8 @@
     <accept_stepname/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>61</xloc>
-      <yloc>74</yloc>
+      <xloc>59</xloc>
+      <yloc>102</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -191,15 +191,15 @@
           <stream_name>the_geom</stream_name>
         </field>
         <field>
-          <column_name>NROBARRIO</column_name>
+          <column_name>nrobarrio</column_name>
           <stream_name>NROBARRIO</stream_name>
         </field>
         <field>
-          <column_name>BARRIO</column_name>
+          <column_name>barrio</column_name>
           <stream_name>BARRIO</stream_name>
         </field>
         <field>
-          <column_name>CODBA</column_name>
+          <column_name>codba</column_name>
           <stream_name>CODBA</stream_name>
         </field>
     </fields>
@@ -242,6 +242,38 @@
         <field>
           <column_name>the_geom</column_name>
           <stream_name>the_geom</stream_name>
+        </field>
+        <field>
+          <column_name>gid</column_name>
+          <stream_name>GID</stream_name>
+        </field>
+        <field>
+          <column_name>cod_linea</column_name>
+          <stream_name>COD_LINEA</stream_name>
+        </field>
+        <field>
+          <column_name>desc_linea</column_name>
+          <stream_name>DESC_LINEA</stream_name>
+        </field>
+        <field>
+          <column_name>ordinal_su</column_name>
+          <stream_name>ORDINAL_SU</stream_name>
+        </field>
+        <field>
+          <column_name>cod_sublin</column_name>
+          <stream_name>COD_SUBLIN</stream_name>
+        </field>
+        <field>
+          <column_name>desc_subli</column_name>
+          <stream_name>DESC_SUBLI</stream_name>
+        </field>
+        <field>
+          <column_name>cod_varian</column_name>
+          <stream_name>COD_VARIAN</stream_name>
+        </field>
+        <field>
+          <column_name>desc_varia</column_name>
+          <stream_name>DESC_VARIA</stream_name>
         </field>
     </fields>
      <cluster_schema/>
@@ -327,8 +359,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>468</xloc>
-      <yloc>78</yloc>
+      <xloc>484</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
