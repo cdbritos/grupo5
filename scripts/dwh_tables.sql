@@ -118,62 +118,6 @@ WITH (
 ALTER TABLE public.tiempo
   OWNER TO postgres;
 
-
-CREATE TABLE public.problemas
-(
-idproblema smallint NOT NULL,
-nom_problema character varying(36) NOT NULL,
-column_problema character varying(24) NOT NULL,
-CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
-)WITH (
-  OIDS=FALSE
-);
-
-ALTER TABLE public.problemas
-  OWNER TO postgres;
-
-
-CREATE TABLE public.hogar
-(
-  idHogar integer NOT NULL,
-  nomHogar character varying(50),
-  idNivelConfort smallint NOT NULL,,
-  nomNivelConfort character varying(50),
-  idAsentamiento smallint NOT NULL,,
-  nomAsentamiento character varying(2),
-  idTenencia smallint NOT NULL,,
-  nomTenencia character varying(50),
-  idTipoVivienda smallint NOT NULL,,
-  nomTipoVivienda character varying(50),
-  CONSTRAINT pkey_hogar PRIMARY KEY (idHogar)
-)
-WITH (
-  OIDS=FALSE
-);
-
-ALTER TABLE public.hogar
-  OWNER TO postgres;
-
-
-CREATE TABLE public.bridgeHogarProblemas
-(
-idproblema smallint NOT NULL,
-idhogar integer NOT NULL,
-CONSTRAINT pkey_bridgeHogarProblemas PRIMARY KEY (idproblema, idhogar),
-CONSTRAINT fk_idhogar FOREIGN KEY (idhogar)
-      REFERENCES public.hogar (idhogar) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-CONSTRAINT fk_idproblema FOREIGN KEY (idproblema)
-      REFERENCES public.problemas (idproblema) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)WITH (
-  OIDS=FALSE
-);
-
-ALTER TABLE public.bridgeHogarProblemas
-  OWNER TO postgres;
-
-
 CREATE TABLE public.mediciones
 (
   idfecha character varying(10) NOT NULL,
@@ -206,10 +150,82 @@ ALTER TABLE public.mediciones
   OWNER TO postgres;
 
 
+
+
+CREATE TABLE public.problemas
+(
+idproblema smallint NOT NULL,
+nom_problema character varying(36) NOT NULL,
+column_problema character varying(24) NOT NULL,
+CONSTRAINT "pkeyProblemas" PRIMARY KEY (idproblema)
+)WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.problemas
+  OWNER TO postgres;
+
+
+CREATE TABLE public.hogar
+(
+  idHogar integer NOT NULL,
+  nomHogar character varying(50),
+  idNivelConfort smallint NOT NULL,
+  nomNivelConfort character varying(50),
+  idAsentamiento smallint NOT NULL,
+  nomAsentamiento character varying(2),
+  idTenencia smallint NOT NULL,
+  nomTenencia character varying(50),
+  idTipoVivienda smallint NOT NULL,
+  nomTipoVivienda character varying(50),
+  CONSTRAINT pkey_hogar PRIMARY KEY (idHogar)
+)
+WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.hogar
+  OWNER TO postgres;
+
+
+CREATE TABLE public.bridgeHogarProblemas
+(
+idhogar integer NOT NULL,
+idproblema smallint NOT NULL,
+CONSTRAINT pkey_bridgeHogarProblemas PRIMARY KEY (idhogar,idproblema),
+CONSTRAINT fk_idhogar FOREIGN KEY (idhogar)
+      REFERENCES public.hogar (idhogar) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+CONSTRAINT fk_idproblema FOREIGN KEY (idproblema)
+      REFERENCES public.problemas (idproblema) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)WITH (
+  OIDS=FALSE
+);
+
+ALTER TABLE public.bridgeHogarProblemas
+  OWNER TO postgres;
+
+
+CREATE TABLE public.ubicaciongeog_2
+(
+  idbarrio smallint NOT NULL,
+  nombarrio character varying(30),
+  idccz smallint,
+  nombreccz character varying(50),
+  CONSTRAINT pk_ubicacion2 PRIMARY KEY (idbarrio)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.ubicaciongeog_2
+  OWNER TO postgres;
+
+
 CREATE TABLE public.afectados
 (
   idhogar integer NOT NULL,
-  idbarrio double precision NOT NULL,
+  idbarrio smallint NOT NULL,
   idfecha character varying(10) NOT NULL,
   idcontaminante character varying(4) NOT NULL,
   cantPersonas bigint,
@@ -229,7 +245,7 @@ CREATE TABLE public.afectados
       REFERENCES public.hogar (idhogar) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT fk_idbarrio FOREIGN KEY (idbarrio )
-      REFERENCES public.ubicaciongeog_1 (idbarrio ) MATCH SIMPLE
+      REFERENCES public.ubicaciongeog_2 (idbarrio ) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
