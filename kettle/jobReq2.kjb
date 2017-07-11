@@ -303,7 +303,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>0</xloc>
+      <xloc>48</xloc>
       <yloc>48</yloc>
     </entry>
     <entry>
@@ -348,8 +348,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>256</yloc>
+      <xloc>48</xloc>
+      <yloc>240</yloc>
     </entry>
     <entry>
       <name>UbicacionGeografica2</name>
@@ -383,7 +383,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>160</xloc>
+      <xloc>48</xloc>
       <yloc>144</yloc>
     </entry>
     <entry>

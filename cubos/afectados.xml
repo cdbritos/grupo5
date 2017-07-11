@@ -6,31 +6,31 @@
       <Hierarchy name="TipoVivienda" visible="true" hasAll="true">
         <Table name="hogar" schema="public">
         </Table>
-        <Level name="TipoVivienda" visible="true" column="idtipovivienda" nameColumn="nomtipovivienda" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nomtipovivienda">
+        <Level name="TipoVivienda" visible="true" column="idtipovivienda" nameColumn="nomtipovivienda" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipovivienda">
         </Level>
       </Hierarchy>
       <Hierarchy name="Tenencia" visible="true" hasAll="true">
-        <Table name="hogar" schema="public" alias="">
+        <Table name="hogar" schema="public">
         </Table>
-        <Level name="Tenencia" visible="true" column="idtenencia" nameColumn="idtenencia" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nomtenencia">
+        <Level name="Tenencia" visible="true" column="idtenencia" nameColumn="idtenencia" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtenencia">
         </Level>
       </Hierarchy>
       <Hierarchy name="NivelConfort" visible="true" hasAll="true">
         <Table name="hogar" schema="public">
         </Table>
-        <Level name="Nivel Confort" visible="true" column="idnivelconfort" nameColumn="idnivelconfort" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nomnivelconfort">
+        <Level name="Nivel Confort" visible="true" column="idnivelconfort" nameColumn="idnivelconfort" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomnivelconfort">
         </Level>
       </Hierarchy>
       <Hierarchy name="EnAsentamiento" visible="true" hasAll="true">
         <Table name="hogar" schema="public">
         </Table>
-        <Level name="EnAsentamiento" visible="true" column="idasentamiento" nameColumn="idasentamiento" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nomasentamiento">
+        <Level name="EnAsentamiento" visible="true" column="idasentamiento" nameColumn="idasentamiento" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomasentamiento">
         </Level>
       </Hierarchy>
       <Hierarchy name="ProbVivienda" visible="true" hasAll="true">
         <Table name="problemas" schema="public">
         </Table>
-        <Level name="problema" visible="true" column="idproblema" nameColumn="idproblema" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nom_problema">
+        <Level name="problema" visible="true" column="idproblema" nameColumn="idproblema" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nom_problema">
         </Level>
       </Hierarchy>
     </Dimension>
@@ -56,39 +56,35 @@
         </Level>
       </Hierarchy>
     </Dimension>
-    <Dimension type="StandardDimension" visible="true" foreignKey="idfecha" highCardinality="false" name="Tiempo">
+    <Dimension type="TimeDimension" visible="true" foreignKey="idfecha" highCardinality="false" name="Tiempo">
       <Hierarchy name="Fecha-Anio" visible="true" hasAll="true">
         <Table name="tiempo" schema="public">
         </Table>
-        <Level name="Anio" visible="true" column="anio" nameColumn="anio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="anio">
+        <Level name="Anio" visible="true" column="anio" nameColumn="anio" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" captionColumn="anio">
         </Level>
-        <Level name="Semestre" visible="true" column="semestre" nameColumn="semestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="semestre">
+        <Level name="Semestre" visible="true" column="semestre" nameColumn="semestre" type="Numeric" uniqueMembers="false" levelType="TimeHalfYear" hideMemberIf="Never" captionColumn="semestre">
         </Level>
-        <Level name="Trimestre" visible="true" column="trimestre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="trimestre">
+        <Level name="Trimestre" visible="true" column="trimestre" type="Numeric" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never" captionColumn="trimestre">
         </Level>
-        <Level name="Estacion" visible="true" column="id_estacion_anio" nameColumn="id_estacion_anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_estacion_anio">
+        <Level name="Mes" visible="true" column="id_mes" ordinalColumn="id_mes" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" captionColumn="nombre_mes">
         </Level>
-        <Level name="DiaSemana" visible="true" column="id_dia_semana" nameColumn="id_dia_semana" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_dia_semana">
-        </Level>
-        <Level name="Mes" visible="true" column="id_mes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombre_mes">
-        </Level>
-        <Level name="Fecha" visible="true" column="idfecha" nameColumn="fecha" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
+        <Level name="Fecha" visible="true" column="idfecha" nameColumn="fecha" type="Date" uniqueMembers="false" levelType="TimeUndefined" hideMemberIf="Never" captionColumn="fecha">
         </Level>
       </Hierarchy>
       <Hierarchy name="Fecha-DiaSemana" visible="true" hasAll="true">
         <Table name="tiempo" schema="public">
         </Table>
-        <Level name="diaSemana" visible="true" column="id_dia_semana" nameColumn="id_dia_semana" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nombre_dia_semana">
+        <Level name="diaSemana" visible="true" column="id_dia_semana" nameColumn="id_dia_semana" type="Numeric" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" captionColumn="nombre_dia_semana">
         </Level>
       </Hierarchy>
       <Hierarchy name="Fecha-Estacion" visible="true" hasAll="true">
         <Table name="tiempo" schema="public">
         </Table>
-        <Level name="Estacion" visible="true" column="id_estacion_anio" nameColumn="id_estacion_anio" type="Integer" uniqueMembers="false" levelType="Regular" captionColumn="nombre_estacion_anio">
+        <Level name="Estacion" visible="true" column="id_estacion_anio" nameColumn="id_estacion_anio" type="Integer" uniqueMembers="false" levelType="TimeUndefined" hideMemberIf="Never" captionColumn="nombre_estacion_anio">
         </Level>
       </Hierarchy>
     </Dimension>
-    <Measure name="cantHombres" column="canthombres" datatype="Integer" aggregator="sum" caption="Cant Hombres" visible="true">
+    <Measure name="cantHombres" column="canthombres" datatype="Integer" aggregator="avg" caption="Cant Hombres" visible="true">
     </Measure>
     <Measure name="CantMAyores14" column="cantpersonasmas14" datatype="Integer" aggregator="sum" caption="Cant MAyores 14" visible="true">
     </Measure>

@@ -502,11 +502,11 @@
     </hop>
     <hop>
       <from>SelectFactFields</from>
-      <to>SortBarrioCCZ</to>
+      <to>SortBarrio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SortBarrioCCZ</from>
+      <from>SortBarrio</from>
       <to>JoinByBarrio</to>
       <enabled>Y</enabled>
     </hop>
@@ -797,7 +797,7 @@
       <schema_name/>
     </partitioning>
 <join_type>INNER</join_type>
-<step1>SortBarrioCCZ</step1>
+<step1>SortBarrio</step1>
 <step2>Sort rows</step2>
     <keys_1>
       <key>idbarrio</key>
@@ -1244,7 +1244,7 @@
     </step>
 
   <step>
-    <name>SortBarrioCCZ</name>
+    <name>SortBarrio</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
